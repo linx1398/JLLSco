@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JLLSco_in_Csharp", "JLLSco\JLLSco_in_Csharp.csproj", "{4030C0B3-D110-4A4B-B444-19A39E9303FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JLLSco", "JLLSco\JLLSco.csproj", "{4030C0B3-D110-4A4B-B444-19A39E9303FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
