@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace JLLSco
 {
-    /// <summary>
-    /// Interaction logic for MainUI.xaml
-    /// </summary>
     public partial class MainUI : MetroWindow
     {
         public MainUI()

@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        Title="JLLSco." SnapsToDevicePixels="True">
+        Title="JLLSco Hairdressing" SnapsToDevicePixels="True"
+        ShowIconOnTitleBar="True">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -12,34 +13,59 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Purple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <Controls:MetroWindow.WindowCommands>
         <Controls:WindowCommands>
-            <Button Content="settings" />
             <Button>
                 <StackPanel Orientation="Horizontal">
-                    <Rectangle Width="20" Height="20">
+                    <Rectangle Width="20" Height="20" Margin="0,0,7,0">
                         <Rectangle.Resources>
-                            <SolidColorBrush x:Key="BlackBrush" Color="White" />
+                            <SolidColorBrush x:Key="BlackBrush" Color="White"/>
                         </Rectangle.Resources>
                         <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" />
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_user}"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <TextBlock Text="deploy cupcakes" />
+                    <TextBlock Text="LOG IN" VerticalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20" Margin="0,0,7,0">
+                        <Rectangle.Resources>
+                            <SolidColorBrush x:Key="BlackBrush" Color="White"/>
+                        </Rectangle.Resources>
+                        <Rectangle.Fill>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_settings}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock Text="ADMINISTRATOR OPTIONS" VerticalAlignment="Center" Foreground="White"/>
                 </StackPanel>
             </Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
     <Grid>
         <TabControl>
-            <TabItem Header="TabItem">
-                <Grid Background="WhiteSmoke"/>
+            <TabItem Header="Make Appointment">
+                <Grid Background="WhiteSmoke">
+                    <Label Content="Work in progress" HorizontalAlignment="Center" Margin="22,42,0,0" VerticalAlignment="Center" FontSize="30"/>
+                    <Controls:ProgressRing IsActive="True" Margin="356,278,340,115" />
+                </Grid>
             </TabItem>
-            <TabItem Header="TabItem2">
-                <Grid Background="WhiteSmoke"/>
+            <TabItem Header="View Your Appointments">
+                <Grid Background="WhiteSmoke">
+                    <Label Content="Work in progress" HorizontalAlignment="Center" Margin="22,42,0,0" VerticalAlignment="Center" FontSize="30"/>
+                    <Controls:ProgressRing IsActive="True" Margin="356,278,340,115" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Change Account Settings">
+                <Grid Background="WhiteSmoke">
+                    <Label Content="Work in progress" HorizontalAlignment="Center" Margin="22,42,0,0" VerticalAlignment="Center" FontSize="30"/>
+                    <Controls:ProgressRing IsActive="True" Margin="356,278,340,115" />
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
