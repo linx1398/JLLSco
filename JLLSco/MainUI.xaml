@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Title="JLLSco Hairdressing" SnapsToDevicePixels="True"
-        ShowIconOnTitleBar="True">
+        ShowIconOnTitleBar="True"
+        MinWidth="640" MinHeight="480">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
