@@ -24,15 +24,15 @@ namespace JLLSco
             try
             {
                 connection = new MySqlConnection(connectionString);
+                Debug.WriteLine("Connection string was accepted.");
                 try
                 {
                     connection.Open();
                 }
                 catch
                 {
-                    Debug.WriteLine("Connection did not open");
+                    Debug.WriteLine("Connection did not open.");
                 }
-                Debug.WriteLine("Worked?");
             }
             catch
             {
