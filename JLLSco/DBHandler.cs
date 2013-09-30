@@ -8,27 +8,30 @@ using MySql.Data.MySqlClient;
 
 namespace JLLSco
 {
-    class DBHandler
+    public class DBHandler
     {
         private static MySqlConnection connection;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
+        private static string server, database, uid, password;
 
-
-        //Initialize values
         public static void testConnection()
         {
-            string server = "jdbc:mysql://jllscohair.db.11636855.hostedresource.com:3306",
-            database = "jllscohair",
-            uid = "jllscohair",
-            password = "Passw0rd132!",
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" +
+            server = "jdbc:mysql://jllscohair.db.11636855.hostedresource.com:3306";
+            database = "jllscohair";
+            uid = "jllscohair";
+            password = "Passw0rd132!";
+            string connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
             try
             {
                 connection = new MySqlConnection(connectionString);
+                try
+                {
+                    connection.Open();
+                }
+                catch
+                {
+                    Debug.WriteLine("Connection did not open");
+                }
                 Debug.WriteLine("Worked?");
             }
             catch
