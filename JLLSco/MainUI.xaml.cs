@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace JLLSco
 {
@@ -20,6 +21,11 @@ namespace JLLSco
         public MainUI()
         {
             InitializeComponent();
+        }
+
+        private void testDBBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DBHandler.testConnection();
         }
     }
 }
