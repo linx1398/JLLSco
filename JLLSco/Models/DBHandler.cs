@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using MySql.Data.MySqlClient;
 
-namespace JLLSco
+namespace JLLSco.Models
 {
     public class DBHandler
     {

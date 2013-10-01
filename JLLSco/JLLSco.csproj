@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>JLLSco.App</StartupObject>
+    <StartupObject>JLLSco.Controllers.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Views\ScissorsIcon2.ico</ApplicationIcon>

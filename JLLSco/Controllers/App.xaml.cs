@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace JLLSco
+namespace JLLSco.Controllers
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
-        private MainUI mainUI;
+        private Views.MainUI mainUI;
 
         public App()
             : base()
         {
             //Create long-lived objects
-            mainUI = new MainUI();
+            mainUI = new Views.MainUI();
 
             //Wire up event handlers
             mainUI.AddTestDBButtonHandler(HandleTestDBButton);
@@ -31,7 +31,7 @@ namespace JLLSco
 
         private void HandleTestDBButton(object sender, RoutedEventArgs e)
         {
-            DBHandler.testConnection();
+            Models.DBHandler.testConnection();
         }
 
 

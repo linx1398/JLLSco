@@ -1,7 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using System.Windows;
 
-namespace JLLSco
+namespace JLLSco.Views
 {
     public partial class MainUI : MetroWindow
     {
