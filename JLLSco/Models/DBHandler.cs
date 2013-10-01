@@ -4,26 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using MySql.Data.MySqlClient;
+using Npgsql;
 
 namespace JLLSco.Models
 {
     public class DBHandler
     {
-        private static MySqlConnection connection;
-        private static string server, database, uid, password;
+
+
+        private static NpgsqlConnection connection;
+        private static string server, databaseName, uid, password, port;
 
         public static void testConnection()
         {
-            server = "jdbc:mysql://jllscohair.db.11636855.hostedresource.com:3306";
-            database = "jllscohair";
-            uid = "jllscohair";
-            password = "Passw0rd132!";
-            string connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+            server = "ec2-184-73-162-34.compute-1.amazonaws.com:5432";
+            databaseName = "d8gkfgn82k83n1";
+            uid = "jeuhypnnmpolvm";
+            password = "X5SJdA_McTmIGR2tewHGxCLe4M";
+            port = "5432";
+
+            string connectionString = String.Format("Server={0};Port={1};User Id={2};Password={3};Database={4};", 
+                server, port, uid, password, databaseName);
+
+            Debug.WriteLine(connectionString);
             try
             {
-                connection = new MySqlConnection(connectionString);
+                connection = new NpgsqlConnection(connectionString);
                 Debug.WriteLine("Connection string was accepted.");
                 try
                 {
@@ -36,7 +42,7 @@ namespace JLLSco.Models
             }
             catch
             {
-                Debug.WriteLine("Failure");
+                Debug.WriteLine("Connection String was not accepted");
             }
         }
 
