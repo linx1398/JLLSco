@@ -37,7 +37,7 @@
     <StartupObject>JLLSco.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>ScissorsIcon2.ico</ApplicationIcon>
+    <ApplicationIcon>Views\ScissorsIcon2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro">
@@ -62,15 +62,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Controllers\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="Controllers\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MainUI.xaml">
+    <Page Include="Views\MainUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -80,10 +80,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBHandler.cs" />
-    <Compile Include="MainUI.xaml.cs">
+    <Compile Include="Models\DBHandler.cs" />
+    <Compile Include="Views\MainUI.xaml.cs">
       <DependentUpon>MainUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -116,14 +117,15 @@
     <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="favicon.ico" />
+    <Resource Include="Resources\favicon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ScissorsIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ScissorsIcon2.ico" />
+    <Resource Include="Views\ScissorsIcon2.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
