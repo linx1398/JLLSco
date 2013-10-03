@@ -15,6 +15,7 @@ namespace JLLSco.Controllers
     public partial class App : Application
     {
         private Views.MainUI mainUI;
+        Models.RemoteDBHandler handler = new Models.RemoteDBHandler();
 
         public App()
             : base()
@@ -31,7 +32,7 @@ namespace JLLSco.Controllers
 
         private void HandleTestDBButton(object sender, RoutedEventArgs e)
         {
-            Models.DBHandler.testConnection();
+            handler.testConnection();
         }
 
 

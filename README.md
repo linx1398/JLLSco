@@ -8,4 +8,4 @@ If you're using Github for Windows, you can open the project by right clicking o
 
 The project should ideally be opened in Visual Studio 2012, which you can obtain from Microsoft Dreamspark (https://www.dreamspark.com/) by signing up for an account and downloading the software. Use Solution Explorer on the right-hand side to open individual files for editing.
 
- Please see http://mahapps.com/MahApps.Metro/ to use metro style controls in the application.
+Please see http://mahapps.com/MahApps.Metro/ to use metro style controls in the application.

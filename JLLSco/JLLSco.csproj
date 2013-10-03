@@ -89,6 +89,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\DBHandler.cs" />
+    <Compile Include="Models\MOCKDBHandler.cs" />
+    <Compile Include="Models\RemoteDBHandler.cs" />
     <Compile Include="Views\MainUI.xaml.cs">
       <DependentUpon>MainUI.xaml</DependentUpon>
     </Compile>

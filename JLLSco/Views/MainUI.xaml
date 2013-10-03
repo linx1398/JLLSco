@@ -1,11 +1,12 @@
-﻿<Controls:MetroWindow x:Name="___No_Name_" x:Class="JLLSco.Views.MainUI"
+﻿<Controls:MetroWindow
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="___No_Name_" x:Class="JLLSco.Views.MainUI"
         Title="JLLSco Hairdressing" SnapsToDevicePixels="True"
         ShowIconOnTitleBar="True"
-        MinWidth="640" MinHeight="480" Icon="ScissorsIcon2.ico">
-    <Window.Resources>
+        MinWidth="640" MinHeight="480" Icon="ScissorsIcon2.ico" d:DesignWidth="824" d:DesignHeight="586">
+    <Controls:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
@@ -17,7 +18,7 @@
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Window.Resources>
+    </Controls:MetroWindow.Resources>
     <Controls:MetroWindow.WindowCommands>
         <Controls:WindowCommands>
             <Button>
@@ -49,12 +50,12 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
     <Grid>
-        <TabControl>
+        <TabControl Margin="10">
             <TabItem Header="Make Appointment">
                 <Grid Background="WhiteSmoke">
                     <Label Content="Work in progress" HorizontalAlignment="Center" Margin="22,42,0,0" VerticalAlignment="Center" FontSize="30"/>
                     <Controls:ProgressRing IsActive="True" Margin="356,278,340,115" />
-                    <Button Content="Test Database" HorizontalAlignment="Center" Margin="330,204,330,224" VerticalAlignment="Center" Width="96" Name="testDBButton"/>
+                    <Button Content="Test Database" HorizontalAlignment="Center" Margin="330,204,330,224" VerticalAlignment="Center" Width="96" x:Name="testDBButton"/>
                 </Grid>
             </TabItem>
             <TabItem Header="View Your Appointments">
