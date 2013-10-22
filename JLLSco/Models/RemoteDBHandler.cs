@@ -31,7 +31,7 @@ namespace JLLSco.Models
             NpgsqlConnection connection;
             //Build connection string
             string server, databaseName, uid, password, port, ssl, sslFactory;
-            server = "jdbc:postgresql://ec2-184-73-162-34.compute-1.amazonaws.com/d8gkfgn82k83n1";
+            server = "ec2-184-73-162-34.compute-1.amazonaws.com";
             databaseName = "d8gkfgn82k83n1";
             uid = "jeuhypnnmpolvm";
             password = "X5SJdA_McTmIGR2tewHGxCLe4M";
@@ -50,10 +50,22 @@ namespace JLLSco.Models
                 try
                 {
                     connection.Open();
+                    Debug.WriteLine("Connection Succesful");
+                    NpgsqlCommand command = new NpgsqlCommand("select * from users", connection);
+                    NpgsqlDataReader dr = command.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        for (int i = 0; i < dr.FieldCount; i++)
+                        {
+                            Debug.WriteLine("{0} \t", dr[i]);
+                        }
+                        
+                    }
                 }
                 catch (NpgsqlException msg)
                 {
                     Debug.WriteLine("Connection did not open: " + msg);
+                    Debug.WriteLine(connection.ToString());
                 }
             }
             catch

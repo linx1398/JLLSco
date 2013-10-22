@@ -56,6 +56,7 @@
                     <Label Content="Work in progress" HorizontalAlignment="Center" Margin="22,42,0,0" VerticalAlignment="Center" FontSize="30"/>
                     <Controls:ProgressRing IsActive="True" Margin="356,278,340,115" />
                     <Button Content="Test Database" HorizontalAlignment="Center" Margin="330,204,330,224" VerticalAlignment="Center" Width="96" x:Name="testDBButton"/>
+                    <DatePicker HorizontalAlignment="Left" Margin="23,59,0,0" VerticalAlignment="Top" Width="204"/>
                 </Grid>
             </TabItem>
             <TabItem Header="View Your Appointments">
