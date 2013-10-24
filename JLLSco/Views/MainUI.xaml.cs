@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using System.Diagnostics;
 using System.Windows;
 
 namespace JLLSco.Views
@@ -14,5 +15,19 @@ namespace JLLSco.Views
         {
             testDBButton.Click += handler;
         }
+
+        private void testDBButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void AddAdminButtonHandler(RoutedEventHandler handler) {
+
+            adminButton.Click += handler;
+        }
+
+
+
+
     }
 }

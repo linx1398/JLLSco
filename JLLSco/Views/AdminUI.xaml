@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="___No_Name_" x:Class="JLLSco.Views.MainUI"
-        Title="JLLSco Hairdressing" SnapsToDevicePixels="True"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="___No_Name_" x:Class="JLLSco.Views.AdminWindow"
+        Title="JLLSco Admin" SnapsToDevicePixels="True"
         ShowIconOnTitleBar="True"
-        MinWidth="640" MinHeight="480" Icon="ScissorsIcon2.ico" d:DesignWidth="824" d:DesignHeight="586">
+        MinWidth="480" MinHeight="480" Icon="ScissorsIcon2.ico" Width="874" Height="589">
     <Controls:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -47,7 +47,7 @@
                     </Rectangle>
                     <TextBlock Text="ADMINISTRATOR OPTIONS" VerticalAlignment="Center" Foreground="White"/>
                 </StackPanel>
-                
+
             </Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
@@ -57,17 +57,32 @@
             <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="23*"/>
         </Grid.ColumnDefinitions>
-        <TabControl Margin="10" Grid.ColumnSpan="3">
-            <TabItem Header="Make Appointment">
-                <Grid Background="WhiteSmoke" Margin="-1,-3,1,3">
-                    <Button Content="Test Database" HorizontalAlignment="Center" Margin="330,204,330,224" VerticalAlignment="Center" Width="96" x:Name="testDBButton" Click="testDBButton_Click"/>
-                    <DatePicker HorizontalAlignment="Left" Margin="23,59,0,0" VerticalAlignment="Top" Width="204"/>
-                    <Expander Header="Expander" HorizontalAlignment="Left" Margin="332,363,0,0" VerticalAlignment="Top">
-                        <Grid Background="#FFE5E5E5"/>
-                    </Expander>
+        <TabControl Margin="10,0,10,20" Grid.ColumnSpan="3">
+
+            <TabItem Header="Edit Users">
+                <Grid Background="WhiteSmoke">
+                    <GroupBox Header="Current Users" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Height="410" Width="262">
+                        <ListBox HorizontalAlignment="Left" Width="261" Margin="-9,0,-2,-5" x:Name="UserList" SelectionChanged="UserList_SelectionChanged"/>
+                    </GroupBox>
+                    <Label Content="First Name:" HorizontalAlignment="Left" Margin="329,87,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Email:" HorizontalAlignment="Left" Margin="330,171,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Phone:" HorizontalAlignment="Left" Margin="330,212,0,0" VerticalAlignment="Top"/>
+                    <Label Content="User Type:" HorizontalAlignment="Left" Margin="329,252,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Last Name:" HorizontalAlignment="Left" Margin="330,130,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="433,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="firstName"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="433,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="lastName"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="433,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="email"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="433,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="phone"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="433,252,0,0" VerticalAlignment="Top" Width="211" IsSynchronizedWithCurrentItem="False" x:Name="type">
+                        <ListBoxItem Content="Admin"/>
+                        <ListBoxItem Content="Hairdresser"/>
+                        <ListBoxItem Content="User"/>
+                    </ComboBox>
+                    <Button x:Name="createUserButton" Content="Create User" HorizontalAlignment="Left" Margin="10,444,0,0" VerticalAlignment="Top" Width="121" Click="creatUserButton_Click"/>
+                    <Button Content="Delete User" HorizontalAlignment="Left" Margin="147,444,0,0" VerticalAlignment="Top" Width="125"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="View Your Appointments">
+            <TabItem Header="Edit Appointments">
                 <Grid Background="WhiteSmoke">
                     <Label Content="Work in progress" HorizontalAlignment="Center" Margin="22,42,0,0" VerticalAlignment="Center" FontSize="30"/>
                     <Controls:ProgressRing IsActive="True" Margin="356,278,340,115" />

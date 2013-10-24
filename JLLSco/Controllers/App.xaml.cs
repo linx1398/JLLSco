@@ -1,7 +1,9 @@
-﻿using System;
+﻿using JLLSco.Views;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +27,7 @@ namespace JLLSco.Controllers
 
             //Wire up event handlers
             mainUI.AddTestDBButtonHandler(HandleTestDBButton);
+            mainUI.AddAdminButtonHandler(adminButton_Click);
 
             //Show view(s)
             mainUI.Show();
@@ -33,6 +36,15 @@ namespace JLLSco.Controllers
         private void HandleTestDBButton(object sender, RoutedEventArgs e)
         {
             handler.testConnection();
+        }
+
+        void adminButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("CLICK");
+            AdminWindow a = new AdminWindow();
+            a.Show();
+            mainUI.Close();
+            
         }
 
 
