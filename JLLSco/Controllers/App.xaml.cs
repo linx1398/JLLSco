@@ -1,4 +1,4 @@
-﻿using JLLSco.Views;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -17,6 +17,7 @@ namespace JLLSco.Controllers
     public partial class App : Application
     {
         private Views.MainUI mainUI;
+        private Views.AdminUI adminUI;
         Models.RemoteDBHandler handler = new Models.RemoteDBHandler();
 
         public App()
@@ -41,9 +42,9 @@ namespace JLLSco.Controllers
         void adminButton_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("CLICK");
-            AdminWindow a = new AdminWindow();
-            a.Show();
-            mainUI.Close();
+            adminUI = new Views.AdminUI();
+            adminUI.Owner = mainUI;
+            adminUI.Show();
             
         }
 

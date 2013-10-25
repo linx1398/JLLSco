@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="___No_Name_" x:Class="JLLSco.Views.AdminWindow"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="___No_Name_" x:Class="JLLSco.Views.AdminUI"
         Title="JLLSco Admin" SnapsToDevicePixels="True"
         ShowIconOnTitleBar="True"
         MinWidth="480" MinHeight="480" Icon="ScissorsIcon2.ico" Width="874" Height="589">
@@ -13,8 +13,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Purple.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Orange.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -22,30 +22,17 @@
     </Controls:MetroWindow.Resources>
     <Controls:MetroWindow.WindowCommands>
         <Controls:WindowCommands>
-            <Button>
+            <Button x:Name="openUserUIButton">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20" Margin="0,0,7,0">
                         <Rectangle.Resources>
                             <SolidColorBrush x:Key="BlackBrush" Color="White"/>
                         </Rectangle.Resources>
                         <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_user}"/>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_home}"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <TextBlock Text="LOG IN" VerticalAlignment="Center" Foreground="White"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="adminButton">
-                <StackPanel Orientation="Horizontal">
-                    <Rectangle Width="20" Height="20" Margin="0,0,7,0">
-                        <Rectangle.Resources>
-                            <SolidColorBrush x:Key="BlackBrush" Color="White"/>
-                        </Rectangle.Resources>
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_settings}"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="ADMINISTRATOR OPTIONS" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBlock Text="BACK TO USER OPTIONS" VerticalAlignment="Center" Foreground="White"/>
                 </StackPanel>
 
             </Button>
@@ -60,9 +47,9 @@
         <TabControl Margin="10,0,10,20" Grid.ColumnSpan="3">
 
             <TabItem Header="Edit Users">
-                <Grid Background="WhiteSmoke">
+                <Grid Background="Black">
                     <GroupBox Header="Current Users" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Height="410" Width="262">
-                        <ListBox HorizontalAlignment="Left" Width="261" Margin="-9,0,-2,-5" x:Name="UserList" SelectionChanged="UserList_SelectionChanged"/>
+                        <ListBox Margin="-9,0,-2,-5" x:Name="UserList" SelectionChanged="UserList_SelectionChanged"/>
                     </GroupBox>
                     <Label Content="First Name:" HorizontalAlignment="Left" Margin="329,87,0,0" VerticalAlignment="Top"/>
                     <Label Content="Email:" HorizontalAlignment="Left" Margin="330,171,0,0" VerticalAlignment="Top"/>

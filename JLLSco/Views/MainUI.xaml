@@ -22,6 +22,20 @@
     </Controls:MetroWindow.Resources>
     <Controls:MetroWindow.WindowCommands>
         <Controls:WindowCommands>
+            <Button x:Name="adminButton">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20" Margin="0,0,7,0">
+                        <Rectangle.Resources>
+                            <SolidColorBrush x:Key="BlackBrush" Color="Orange"/>
+                        </Rectangle.Resources>
+                        <Rectangle.Fill>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_settings}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock Text="ADMINISTRATOR OPTIONS" VerticalAlignment="Center" Foreground="Orange"/>
+                </StackPanel>
+
+            </Button>
             <Button>
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20" Margin="0,0,7,0">
@@ -34,20 +48,6 @@
                     </Rectangle>
                     <TextBlock Text="LOG IN" VerticalAlignment="Center" Foreground="White"/>
                 </StackPanel>
-            </Button>
-            <Button x:Name="adminButton">
-                <StackPanel Orientation="Horizontal">
-                    <Rectangle Width="20" Height="20" Margin="0,0,7,0">
-                        <Rectangle.Resources>
-                            <SolidColorBrush x:Key="BlackBrush" Color="White"/>
-                        </Rectangle.Resources>
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_settings}"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="ADMINISTRATOR OPTIONS" VerticalAlignment="Center" Foreground="White"/>
-                </StackPanel>
-                
             </Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>

@@ -20,18 +20,21 @@ namespace JLLSco.Views
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class AdminWindow : MetroWindow
+    public partial class AdminUI : MetroWindow
     {
         Models.RemoteDBHandler handler = new Models.RemoteDBHandler();
 
-        public AdminWindow()
+        public AdminUI()
         {
             InitializeComponent();
             populateUserList();
 
         }
 
-
+        public void AddOpenUserUIButtonHandler(RoutedEventHandler handler)
+        {
+            openUserUIButton.Click += handler;
+        }
 
         private void creatUserButton_Click(object sender, RoutedEventArgs e)
         {
@@ -80,6 +83,11 @@ namespace JLLSco.Views
             lastName.Text = details[1].ToString();
             email.Text = details[2].ToString();
             phone.Text = details[3].ToString();
+        }
+
+        private void openUserUIButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }
