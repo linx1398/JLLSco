@@ -39,15 +39,12 @@ namespace JLLSco.Controllers
             handler.testConnection();
         }
 
-        void adminButton_Click(object sender, RoutedEventArgs e)
+        private void adminButton_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("CLICK");
             adminUI = new Views.AdminUI();
             adminUI.Owner = mainUI;
-            adminUI.Show();
-            
+            adminUI.ShowDialog();
         }
-
-
     }
 }

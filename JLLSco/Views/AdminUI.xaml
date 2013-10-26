@@ -6,7 +6,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="___No_Name_" x:Class="JLLSco.Views.AdminUI"
         Title="JLLSco Admin" SnapsToDevicePixels="True"
         ShowIconOnTitleBar="True"
-        MinWidth="480" MinHeight="480" Icon="ScissorsIcon2.ico" Width="874" Height="589">
+        MinWidth="848" MinHeight="480" Icon="ScissorsIcon2.ico" Width="848" Height="587">
     <Controls:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,7 +22,7 @@
     </Controls:MetroWindow.Resources>
     <Controls:MetroWindow.WindowCommands>
         <Controls:WindowCommands>
-            <Button x:Name="openUserUIButton">
+            <Button x:Name="backToUserUIButton" Click="backToUserUIButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20" Margin="0,0,7,0">
                         <Rectangle.Resources>
@@ -39,44 +39,43 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="105*"/>
-            <ColumnDefinition Width="8*"/>
-            <ColumnDefinition Width="23*"/>
-        </Grid.ColumnDefinitions>
         <TabControl Margin="10,0,10,20" Grid.ColumnSpan="3">
 
             <TabItem Header="Edit Users">
                 <Grid Background="Black">
-                    <GroupBox Header="Current Users" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Height="410" Width="262">
-                        <ListBox Margin="-9,0,-2,-5" x:Name="UserList" SelectionChanged="UserList_SelectionChanged"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="20*" />
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Current Users" Margin="10,10,10,40" Grid.Column="0">
+                        <ListBox Margin="0,0,0,-28" x:Name="UserList" SelectionChanged="UserList_SelectionChanged" Grid.Column="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                     </GroupBox>
-                    <Label Content="First Name:" HorizontalAlignment="Left" Margin="329,87,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Email:" HorizontalAlignment="Left" Margin="330,171,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Phone:" HorizontalAlignment="Left" Margin="330,212,0,0" VerticalAlignment="Top"/>
-                    <Label Content="User Type:" HorizontalAlignment="Left" Margin="329,252,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Last Name:" HorizontalAlignment="Left" Margin="330,130,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="433,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="firstName"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="433,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="lastName"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="433,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="email"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="433,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="phone"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="433,252,0,0" VerticalAlignment="Top" Width="211" IsSynchronizedWithCurrentItem="False" x:Name="type">
+                    <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Email:" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Phone:" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="User Type:" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Last Name:" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="firstName" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="lastName" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="email" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="phone" Grid.Column="1"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="85,252,0,0" VerticalAlignment="Top" Width="211" IsSynchronizedWithCurrentItem="False" x:Name="type" Grid.Column="1">
                         <ListBoxItem Content="Admin"/>
                         <ListBoxItem Content="Hairdresser"/>
                         <ListBoxItem Content="User"/>
                     </ComboBox>
-                    <Button x:Name="createUserButton" Content="Create User" HorizontalAlignment="Left" Margin="10,444,0,0" VerticalAlignment="Top" Width="121" Click="creatUserButton_Click"/>
-                    <Button Content="Delete User" HorizontalAlignment="Left" Margin="147,444,0,0" VerticalAlignment="Top" Width="125"/>
+                    <Button x:Name="createUserButton" Content="Create User" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="121" Click="creatUserButton_Click" Grid.Column="0"/>
+                    <Button Content="Delete User" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="125" Grid.Column="0"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Edit Appointments">
-                <Grid Background="WhiteSmoke">
+                <Grid Background="Black">
                     <Label Content="Work in progress" HorizontalAlignment="Center" Margin="22,42,0,0" VerticalAlignment="Center" FontSize="30"/>
                     <Controls:ProgressRing IsActive="True" Margin="356,278,340,115" />
                 </Grid>
             </TabItem>
             <TabItem Header="Change Account Settings">
-                <Grid Background="WhiteSmoke">
+                <Grid Background="Black">
                     <Label Content="Work in progress" HorizontalAlignment="Center" Margin="22,42,0,0" VerticalAlignment="Center" FontSize="30"/>
                     <Controls:ProgressRing IsActive="True" Margin="356,278,340,115" />
                 </Grid>

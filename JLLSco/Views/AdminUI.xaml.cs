@@ -31,11 +31,6 @@ namespace JLLSco.Views
 
         }
 
-        public void AddOpenUserUIButtonHandler(RoutedEventHandler handler)
-        {
-            openUserUIButton.Click += handler;
-        }
-
         private void creatUserButton_Click(object sender, RoutedEventArgs e)
         {
             if (firstName.Text != "" && lastName.Text != "" && email.Text !="" && phone.Text != "" && type.Text !="") {
@@ -85,10 +80,9 @@ namespace JLLSco.Views
             phone.Text = details[3].ToString();
         }
 
-        private void openUserUIButton_Click(object sender, RoutedEventArgs e)
+        private void backToUserUIButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
-
     }
 }
