@@ -26,13 +26,13 @@
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20" Margin="0,0,7,0">
                         <Rectangle.Resources>
-                            <SolidColorBrush x:Key="BlackBrush" Color="Orange"/>
+                            <SolidColorBrush x:Key="BlackBrush" Color="White" />
                         </Rectangle.Resources>
                         <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_settings}"/>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_settings}" x:Name="switchUIVisualBrush"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <TextBlock Text="OPEN ADMINISTRATOR WINDOW" VerticalAlignment="Center" Foreground="Orange"/>
+                    <TextBlock Text="OPEN ADMINISTRATOR INTERFACE" VerticalAlignment="Center" Foreground="White" x:Name="switchUITextBlock"/>
                 </StackPanel>
 
             </Button>
@@ -91,7 +91,7 @@
                         <ColumnDefinition Width="20*" />
                     </Grid.ColumnDefinitions>
                     <GroupBox Header="Current Users" Margin="10,10,10,40" Grid.Column="0">
-                        <ListBox Margin="0,0,0,-28" x:Name="UserList" SelectionChanged="UserList_SelectionChanged" Grid.Column="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                        <ListBox Margin="0,0,0,-28" x:Name="UserList" Grid.Column="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                     </GroupBox>
                     <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label Content="Email:" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Grid.Column="1"/>
@@ -107,7 +107,7 @@
                         <ListBoxItem Content="Hairdresser"/>
                         <ListBoxItem Content="User"/>
                     </ComboBox>
-                    <Button x:Name="createUserButton" Content="Create User" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="121" Click="creatUserButton_Click" Grid.Column="0"/>
+                    <Button x:Name="createUserButton" Content="Create User" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="121" Grid.Column="0"/>
                     <Button Content="Delete User" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="125" Grid.Column="0"/>
                 </Grid>
             </TabItem>

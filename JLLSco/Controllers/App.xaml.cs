@@ -1,5 +1,4 @@
-﻿
-using MahApps.Metro;
+﻿using MahApps.Metro;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace JLLSco.Controllers
 {
@@ -51,6 +51,7 @@ namespace JLLSco.Controllers
                 mainUI.adminControls.IsEnabled = true;
                 mainUI.adminControls.Visibility = Visibility.Visible;
                 mainUI.Title = "JLLSco Administrator Options";
+                mainUI.switchUITextBlock.Text = "BACK TO USER INTERFACE";
             }
             else
             {
@@ -60,6 +61,7 @@ namespace JLLSco.Controllers
                 mainUI.userControls.IsEnabled = true;
                 mainUI.userControls.Visibility = Visibility.Visible;
                 mainUI.Title = "JLLSco Hairdressing";
+                mainUI.switchUITextBlock.Text = "OPEN ADMINISTRATOR INTERFACE";
             }
         }
 
