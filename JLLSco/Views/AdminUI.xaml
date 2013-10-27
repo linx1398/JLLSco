@@ -6,7 +6,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="___No_Name_" x:Class="JLLSco.Views.AdminUI"
         Title="JLLSco Admin" SnapsToDevicePixels="True"
         ShowIconOnTitleBar="True"
-        MinWidth="848" MinHeight="480" Icon="ScissorsIcon2.ico" Width="848" Height="588">
+        MinWidth="848" MinHeight="480" Icon="ScissorsIcon2.ico" d:DesignWidth="864.891">
     <Controls:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -38,9 +38,8 @@
             </Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
-    <Grid Margin="0">
-        <TabControl Margin="10,10,10,0" Grid.ColumnSpan="3">
-
+    <Grid>
+        <TabControl Margin="10,0" x:Name="adminControls">
             <TabItem Header="Edit Users">
                 <Grid Background="Black" Margin="0">
                     <Grid.ColumnDefinitions>
