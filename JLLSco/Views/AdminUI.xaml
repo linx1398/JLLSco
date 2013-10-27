@@ -6,14 +6,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="___No_Name_" x:Class="JLLSco.Views.AdminUI"
         Title="JLLSco Admin" SnapsToDevicePixels="True"
         ShowIconOnTitleBar="True"
-        MinWidth="848" MinHeight="480" Icon="ScissorsIcon2.ico" Width="848" Height="587">
+        MinWidth="848" MinHeight="480" Icon="ScissorsIcon2.ico" Width="848" Height="588">
     <Controls:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Orange.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Purple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
@@ -38,11 +38,11 @@
             </Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
-    <Grid>
-        <TabControl Margin="10,0,10,20" Grid.ColumnSpan="3">
+    <Grid Margin="0">
+        <TabControl Margin="10,10,10,0" Grid.ColumnSpan="3">
 
             <TabItem Header="Edit Users">
-                <Grid Background="Black">
+                <Grid Background="Black" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*" />
                         <ColumnDefinition Width="20*" />
@@ -55,10 +55,10 @@
                     <Label Content="Phone:" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label Content="User Type:" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label Content="Last Name:" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="firstName" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="lastName" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="email" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="phone" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="firstName" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="lastName" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="email" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="phone" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
                     <ComboBox HorizontalAlignment="Left" Margin="85,252,0,0" VerticalAlignment="Top" Width="211" IsSynchronizedWithCurrentItem="False" x:Name="type" Grid.Column="1">
                         <ListBoxItem Content="Admin"/>
                         <ListBoxItem Content="Hairdresser"/>

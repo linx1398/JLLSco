@@ -20,14 +20,13 @@ namespace JLLSco.Models
         {
 
             //Build connection string
-            string server, databaseName, uid, password, port, ssl, sslFactory;
+            string server, databaseName, uid, password, port, ssl;
             server = "ec2-107-22-186-169.compute-1.amazonaws.com";
             databaseName = "d9i4dgrss13cip";
             uid = "eskfywbiijsflm";
             password = "ZWY2-ezz_aDoROo2mmA3c0oPKx";
             port = "5432";
             ssl = "true";
-            sslFactory = "org.postgresql.ssl.NonValidatingFactory";
 
             string connectionString = String.Format("Server={0};Port={1};User Id={2};Password={3};Database={4};ssl={5}",
                 server, port, uid, password, databaseName, ssl);
@@ -76,14 +75,13 @@ namespace JLLSco.Models
         {
             NpgsqlConnection connection;
             //Build connection string
-            string server, databaseName, uid, password, port, ssl, sslFactory;
+            string server, databaseName, uid, password, port, ssl;
             server = "ec2-184-73-162-34.compute-1.amazonaws.com";
             databaseName = "d8gkfgn82k83n1";
             uid = "jeuhypnnmpolvm";
             password = "X5SJdA_McTmIGR2tewHGxCLe4M";
             port = "5432";
             ssl = "true";
-            sslFactory = "org.postgresql.ssl.NonValidatingFactory";
 
             string connectionString = String.Format("Server={0};Port={1};User Id={2};Password={3};Database={4};ssl={5}",
                 server, port, uid, password, databaseName, ssl);

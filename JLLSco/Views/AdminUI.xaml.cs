@@ -28,7 +28,6 @@ namespace JLLSco.Views
         {
             InitializeComponent();
             populateUserList();
-
         }
 
         private void creatUserButton_Click(object sender, RoutedEventArgs e)
