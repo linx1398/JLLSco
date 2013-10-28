@@ -26,8 +26,9 @@ namespace JLLSco.Controllers
 
             //Wire up event handlers
             mainUI.AddTestDBButtonHandler(handleTestDBButton);
-            mainUI.AddSwitchUIButtonHandler(switchUIButton_Click);
+            mainUI.AddSwitchToAdminUIButtonHandler(switchToAdminUIButton_Click);
             mainUI.AddUserListSelectionChangedHandler(userList_SelectionChanged);
+            mainUI.AddSwitchToUserUIButtonHandler(switchToUserUIButton_Click);
 
             //Show view(s)
             mainUI.Show();
@@ -38,31 +39,29 @@ namespace JLLSco.Controllers
             handler.testConnection();
         }
 
-        private void switchUIButton_Click(object sender, RoutedEventArgs e)
+        private void switchToAdminUIButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Switching user interface");
-            bool adminUIAlreadyEnabled = mainUI.adminControls.IsEnabled ? true : false;
-            if (!adminUIAlreadyEnabled)
-            {
-                mainUI.userControls.IsEnabled = false;
-                mainUI.userControls.Visibility = Visibility.Collapsed;
-                ThemeManager.ChangeTheme(mainUI, new Accent("Orange", new Uri("pack://application:,,,/MahApps.Metro;component/Styles/Accents/Orange.xaml")), Theme.Light);
-                populateUserList();
-                mainUI.adminControls.IsEnabled = true;
-                mainUI.adminControls.Visibility = Visibility.Visible;
-                mainUI.Title = "JLLSco Administrator Options";
-                mainUI.switchUITextBlock.Text = "BACK TO USER INTERFACE";
-            }
-            else
-            {
-                mainUI.adminControls.IsEnabled = false;
-                mainUI.adminControls.Visibility = Visibility.Collapsed;
-                ThemeManager.ChangeTheme(mainUI, new Accent("Purple", new Uri("pack://application:,,,/MahApps.Metro;component/Styles/Accents/Purple.xaml")), Theme.Light);
-                mainUI.userControls.IsEnabled = true;
-                mainUI.userControls.Visibility = Visibility.Visible;
-                mainUI.Title = "JLLSco Hairdressing";
-                mainUI.switchUITextBlock.Text = "OPEN ADMINISTRATOR INTERFACE";
-            }
+            mainUI.userControls.IsEnabled = false;
+            mainUI.userControls.Visibility = Visibility.Collapsed;
+            ThemeManager.ChangeTheme(mainUI, new Accent("Orange", new Uri("pack://application:,,,/MahApps.Metro;component/Styles/Accents/Orange.xaml")), Theme.Light);
+            populateUserList();
+            mainUI.adminControls.IsEnabled = true;
+            mainUI.adminControls.Visibility = Visibility.Visible;
+            mainUI.Title = "JLLSco Administrator Options";
+            mainUI.switchToAdminUIButton.Visibility = Visibility.Collapsed;
+            mainUI.switchToUserUIButton.Visibility = Visibility.Visible;
+        }
+
+        private void switchToUserUIButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainUI.adminControls.IsEnabled = false;
+            mainUI.adminControls.Visibility = Visibility.Collapsed;
+            ThemeManager.ChangeTheme(mainUI, new Accent("Purple", new Uri("pack://application:,,,/MahApps.Metro;component/Styles/Accents/Purple.xaml")), Theme.Light);
+            mainUI.userControls.IsEnabled = true;
+            mainUI.userControls.Visibility = Visibility.Visible;
+            mainUI.Title = "JLLSco Hairdressing";
+            mainUI.switchToUserUIButton.Visibility = Visibility.Collapsed;
+            mainUI.switchToAdminUIButton.Visibility = Visibility.Visible;
         }
 
         private void userList_SelectionChanged(object sender, RoutedEventArgs e)

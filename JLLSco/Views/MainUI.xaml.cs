@@ -10,9 +10,6 @@ namespace JLLSco.Views
 {
     public partial class MainUI : MetroWindow
     {
-
-        Models.RemoteDBHandler handler = new Models.RemoteDBHandler();
-
         public MainUI()
         {
             InitializeComponent();
@@ -23,9 +20,14 @@ namespace JLLSco.Views
             testDBButton.Click += handler;
         }
 
-        public void AddSwitchUIButtonHandler(RoutedEventHandler handler) 
+        public void AddSwitchToAdminUIButtonHandler(RoutedEventHandler handler) 
         {
-            switchUIButton.Click += handler;
+            switchToAdminUIButton.Click += handler;
+        }
+
+        public void AddSwitchToUserUIButtonHandler(RoutedEventHandler handler)
+        {
+            switchToUserUIButton.Click += handler;
         }
 
         public void AddUserListSelectionChangedHandler(SelectionChangedEventHandler handler)

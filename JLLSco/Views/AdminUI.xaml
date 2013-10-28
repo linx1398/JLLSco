@@ -34,7 +34,6 @@
                     </Rectangle>
                     <TextBlock Text="BACK TO USER OPTIONS" VerticalAlignment="Center" Foreground="White"/>
                 </StackPanel>
-
             </Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>

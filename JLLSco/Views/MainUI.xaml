@@ -22,19 +22,31 @@
     </Controls:MetroWindow.Resources>
     <Controls:MetroWindow.WindowCommands>
         <Controls:WindowCommands>
-            <Button x:Name="switchUIButton">
+            <Button x:Name="switchToAdminUIButton">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20" Margin="0,0,7,0">
                         <Rectangle.Resources>
-                            <SolidColorBrush x:Key="BlackBrush" Color="White" />
+                            <SolidColorBrush x:Key="BlackBrush" Color="Orange" />
                         </Rectangle.Resources>
                         <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_settings}" x:Name="switchUIVisualBrush"/>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_settings}"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <TextBlock Text="OPEN ADMINISTRATOR INTERFACE" VerticalAlignment="Center" Foreground="White" x:Name="switchUITextBlock"/>
+                    <TextBlock Text="OPEN ADMINISTRATOR INTERFACE" VerticalAlignment="Center" Foreground="Orange"/>
                 </StackPanel>
-
+            </Button>
+            <Button x:Name="switchToUserUIButton" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20" Margin="0,0,7,0">
+                        <Rectangle.Resources>
+                            <SolidColorBrush x:Key="BlackBrush" Color="Purple"/>
+                        </Rectangle.Resources>
+                        <Rectangle.Fill>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_home}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock Text="BACK TO USER OPTIONS" VerticalAlignment="Center" Foreground="Purple"/>
+                </StackPanel>
             </Button>
             <Button>
                 <StackPanel Orientation="Horizontal">
