@@ -78,6 +78,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\LoginInformationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +94,9 @@
   <ItemGroup>
     <Compile Include="Models\DBHandler.cs" />
     <Compile Include="Models\RemoteDBHandler.cs" />
+    <Compile Include="Views\LoginInformationWindow.xaml.cs">
+      <DependentUpon>LoginInformationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainUI.xaml.cs">
       <DependentUpon>MainUI.xaml</DependentUpon>
     </Compile>

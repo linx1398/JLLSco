@@ -39,5 +39,12 @@ namespace JLLSco.Views
         {
             createUserButton.Click += handler;
         }
+
+        private void openLoginInformationWindow_Click(object sender, RoutedEventArgs e)
+        {
+            LoginInformationWindow loginInformationWindow = new LoginInformationWindow();
+            loginInformationWindow.Owner = this;
+            loginInformationWindow.ShowDialog();
+        }
     }
 }

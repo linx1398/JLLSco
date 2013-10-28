@@ -48,7 +48,7 @@
                     <TextBlock Text="BACK TO USER OPTIONS" VerticalAlignment="Center" Foreground="Purple"/>
                 </StackPanel>
             </Button>
-            <Button>
+            <Button x:Name="openLoginInformationWindow" Click="openLoginInformationWindow_Click">
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20" Margin="0,0,7,0">
                         <Rectangle.Resources>
