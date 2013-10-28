@@ -34,5 +34,10 @@ namespace JLLSco.Views
         {
             UserList.SelectionChanged += handler;
         }
+
+        public void AddCreateUserButtonHandler(RoutedEventHandler handler)
+        {
+            createUserButton.Click += handler;
+        }
     }
 }

@@ -26,9 +26,10 @@ namespace JLLSco.Controllers
 
             //Wire up event handlers
             mainUI.AddTestDBButtonHandler(handleTestDBButton);
-            mainUI.AddSwitchToAdminUIButtonHandler(switchToAdminUIButton_Click);
-            mainUI.AddUserListSelectionChangedHandler(userList_SelectionChanged);
-            mainUI.AddSwitchToUserUIButtonHandler(switchToUserUIButton_Click);
+            mainUI.AddSwitchToAdminUIButtonHandler(handleSwitchToAdminUIButton_Click);
+            mainUI.AddUserListSelectionChangedHandler(handleUserList_SelectionChanged);
+            mainUI.AddSwitchToUserUIButtonHandler(handleSwitchToUserUIButton_Click);
+            mainUI.AddCreateUserButtonHandler(handleCreateUserButton_Click);
 
             //Show view(s)
             mainUI.Show();
@@ -39,7 +40,34 @@ namespace JLLSco.Controllers
             handler.testConnection();
         }
 
-        private void switchToAdminUIButton_Click(object sender, RoutedEventArgs e)
+        private void handleCreateUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (mainUI.firstName.Text != "" && mainUI.lastName.Text != "" && mainUI.email.Text != "" && mainUI.phone.Text != "" && mainUI.type.Text != "")
+            {
+                string fname = mainUI.firstName.Text;
+                string lname = mainUI.lastName.Text;
+                string userEmail = mainUI.email.Text;
+                string phoneNo = mainUI.phone.Text;
+                string userType = "";
+                if (mainUI.type.Text == "Admin")
+                {
+                    userType = "a";
+                }
+                else if (mainUI.type.Text == "Hairdresser")
+                {
+                    userType = "h";
+                }
+                else
+                {
+                    userType = "u";
+                }
+
+                handler.addNewUser(fname, lname, userEmail, "test", phoneNo, userType);
+                populateUserList();
+            }
+        }
+
+        private void handleSwitchToAdminUIButton_Click(object sender, RoutedEventArgs e)
         {
             mainUI.userControls.IsEnabled = false;
             mainUI.userControls.Visibility = Visibility.Collapsed;
@@ -52,7 +80,7 @@ namespace JLLSco.Controllers
             mainUI.switchToUserUIButton.Visibility = Visibility.Visible;
         }
 
-        private void switchToUserUIButton_Click(object sender, RoutedEventArgs e)
+        private void handleSwitchToUserUIButton_Click(object sender, RoutedEventArgs e)
         {
             mainUI.adminControls.IsEnabled = false;
             mainUI.adminControls.Visibility = Visibility.Collapsed;
@@ -64,7 +92,7 @@ namespace JLLSco.Controllers
             mainUI.switchToAdminUIButton.Visibility = Visibility.Visible;
         }
 
-        private void userList_SelectionChanged(object sender, RoutedEventArgs e)
+        private void handleUserList_SelectionChanged(object sender, RoutedEventArgs e)
         {
             string name = mainUI.UserList.SelectedItem.ToString();
             string[] nArray = name.Split();
@@ -80,9 +108,9 @@ namespace JLLSco.Controllers
 
         private void populateUserList() {
                     mainUI.UserList.Items.Clear();
-                    ArrayList names = handler.getUserList();
-                    for (int i = 0; i < names.Count; i++) {
-                        mainUI.UserList.Items.Add(names[i].ToString());
+                    ArrayList users = handler.getUserList();
+                    for (int i = 0; i < users.Count; i++) {
+                        mainUI.UserList.Items.Add(users[i].ToString());
                     }
                 }
         }
