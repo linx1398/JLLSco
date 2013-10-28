@@ -94,8 +94,6 @@
   <ItemGroup>
     <Compile Include="Models\DBHandler.cs" />
     <Compile Include="Models\RemoteDBHandler.cs" />
-    <Compile Include="Views\FormClosingEventArgs.cs" />
-    <Compile Include="Views\FormClosingEventArgs_2.cs" />
     <Compile Include="Views\LoginInformationWindow.xaml.cs">
       <DependentUpon>LoginInformationWindow.xaml</DependentUpon>
     </Compile>
