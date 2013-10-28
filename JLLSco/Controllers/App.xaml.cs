@@ -72,8 +72,11 @@ namespace JLLSco.Controllers
             mainUI.userControls.IsEnabled = false;
             mainUI.userControls.Visibility = Visibility.Collapsed;
             ThemeManager.ChangeTheme(mainUI, new Accent("Orange", new Uri("pack://application:,,,/MahApps.Metro;component/Styles/Accents/Orange.xaml")), Theme.Light);
-            populateUserList();
-            mainUI.adminControls.IsEnabled = true;
+            if (mainUI.adminControls.IsEnabled == false)
+            {
+                mainUI.adminControls.IsEnabled = true;
+                populateUserList();
+            }
             mainUI.adminControls.Visibility = Visibility.Visible;
             mainUI.Title = "JLLSco Administrator Options";
             mainUI.switchToAdminUIButton.Visibility = Visibility.Collapsed;
@@ -82,7 +85,6 @@ namespace JLLSco.Controllers
 
         private void handleSwitchToUserUIButton_Click(object sender, RoutedEventArgs e)
         {
-            mainUI.adminControls.IsEnabled = false;
             mainUI.adminControls.Visibility = Visibility.Collapsed;
             ThemeManager.ChangeTheme(mainUI, new Accent("Purple", new Uri("pack://application:,,,/MahApps.Metro;component/Styles/Accents/Purple.xaml")), Theme.Light);
             mainUI.userControls.IsEnabled = true;
