@@ -46,5 +46,15 @@ namespace JLLSco.Views
             loginInformationWindow.Owner = this;
             loginInformationWindow.ShowDialog();
         }
+
+
+        public void AddDeletedUserHandler(RoutedEventHandler handler)
+        {
+            deleteUserBttn.Click += handler;
+        }
+
+        public void AddExpanderHairdresserHandler(RoutedEventHandler handler) {
+            expanderHairdresser.Expanded += handler;
+        }
     }
 }

@@ -30,6 +30,8 @@ namespace JLLSco.Controllers
             mainUI.AddUserListSelectionChangedHandler(handleUserList_SelectionChanged);
             mainUI.AddSwitchToUserUIButtonHandler(handleSwitchToUserUIButton_Click);
             mainUI.AddCreateUserButtonHandler(handleCreateUserButton_Click);
+            mainUI.AddDeletedUserHandler(handleDeleteUser_Click);
+            mainUI.AddExpanderHairdresserHandler(handleHairdresserExpand);
 
             //Show view(s)
             mainUI.Show();
@@ -64,6 +66,7 @@ namespace JLLSco.Controllers
 
                 handler.addNewUser(fname, lname, userEmail, "test", phoneNo, userType);
                 populateUserList();
+                clearForm();
             }
         }
 
@@ -96,24 +99,91 @@ namespace JLLSco.Controllers
 
         private void handleUserList_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            string name = mainUI.UserList.SelectedItem.ToString();
-            string[] nArray = name.Split();
-            string fName = nArray[0];
-            string sName = nArray[1];
-            ArrayList details = handler.getUserDetails(fName, sName);
+            try
+            {
+                string name = mainUI.UserList.SelectedItem.ToString();
+                string[] nArray = name.Split();
+                string fName = nArray[0];
+                string sName = nArray[1];
+                ArrayList details = handler.getUserDetails(fName, sName);
 
-            mainUI.firstName.Text = details[0].ToString();
-            mainUI.lastName.Text = details[1].ToString();
-            mainUI.email.Text = details[2].ToString();
-            mainUI.phone.Text = details[3].ToString();
+                mainUI.firstName.Text = details[0].ToString();
+                mainUI.lastName.Text = details[1].ToString();
+                mainUI.email.Text = details[2].ToString();
+                mainUI.phone.Text = details[3].ToString();
+                string t = details[4].ToString();
+
+                switch (t)
+                {
+                    case "a":
+                        mainUI.type.Text = "Admin";
+                        break;
+                    case "h":
+                        mainUI.type.Text = "Hairdresser";
+                        break;
+                    case "u":
+                        mainUI.type.Text = "User";
+                        break;
+                    default:
+                        break;
+
+
+                }
+
+
+            }
+            catch (NullReferenceException n)
+            {
+
+                Debug.WriteLine("Null reference");
+
+            }
+
         }
 
-        private void populateUserList() {
-                    mainUI.UserList.Items.Clear();
-                    ArrayList users = handler.getUserList();
-                    for (int i = 0; i < users.Count; i++) {
-                        mainUI.UserList.Items.Add(users[i].ToString());
-                    }
-                }
+        private void handleDeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            if (mainUI.UserList.SelectedValue.ToString() != "")
+            {
+                handler.deleteUser(mainUI.email.Text);
+                //mainUI.UserList.SelectedIndex = 0;
+                populateUserList();
+                clearForm();
+            }
+
+
+
+        }
+
+        private void clearForm()
+        {
+            mainUI.firstName.Text = "";
+            mainUI.lastName.Text = "";
+            mainUI.email.Text = "";
+            mainUI.phone.Text = "";
+            mainUI.type.Text = "";
+
+        }
+
+        private void populateUserList()
+        {
+            mainUI.UserList.Items.Clear();
+            ArrayList users = handler.getUserList();
+            for (int i = 0; i < users.Count; i++)
+            {
+                mainUI.UserList.Items.Add(users[i].ToString());
+            }
+        }
+
+        private void handleHairdresserExpand(object sender, RoutedEventArgs e)
+        {
+
+            mainUI.hairdresserList.Items.Clear();
+            ArrayList hairdressers = handler.getUserList("h");
+            for (int i = 0; i < hairdressers.Count; i++)
+            {
+                mainUI.hairdresserList.Items.Add(hairdressers[i].ToString());
+            }
         }
     }
+}

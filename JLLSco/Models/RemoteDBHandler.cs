@@ -139,6 +139,28 @@ namespace JLLSco.Models
 
         }
 
+
+        public ArrayList getUserList(string type)
+        {
+            connect();
+            ArrayList userNames = new ArrayList();
+
+            NpgsqlCommand command = new NpgsqlCommand("select fname, sname from users WHERE type = '" + type + "'", connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                for (int i = 0; i < dr.FieldCount; i += 2)
+                {
+                    //Debug.WriteLine("{0} \t", dr[i]);
+                    userNames.Add(dr[i].ToString() + " " + dr[i + 1].ToString());
+                }
+
+            }
+            closeConnection();
+            return userNames;
+
+        }
+
         public ArrayList getUserDetails(string fName, string sName) {
 
             ArrayList details = new ArrayList();
@@ -157,6 +179,18 @@ namespace JLLSco.Models
             closeConnection();
 
             return details;
+        
+        }
+
+
+
+        public void deleteUser(string email) {
+            connect();
+            NpgsqlCommand command = new NpgsqlCommand("DELETE FROM users WHERE email='"+email+"'", connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+
+            Debug.WriteLine("User deleted");
+            closeConnection();
         
         }
 
