@@ -33,7 +33,6 @@ namespace JLLSco.Controllers
             mainUI.AddSwitchToUserUIButtonHandler(handleSwitchToUserUIButton_Click);
             mainUI.AddCreateUserButtonHandler(handleCreateUserButton_Click);
             mainUI.AddDeletedUserHandler(handleDeleteUser_Click);
-            mainUI.AddExpanderHairdresserHandler(handleHairdresserExpand);
             mainUI.AddTabChangeHandler(handleAvailableTabFocus);
             mainUI.AddTabEditUserHandler(handleSwitchToEditUserHandler);
             mainUI.addCalanderHandler();
@@ -44,6 +43,7 @@ namespace JLLSco.Controllers
 
 
             //Show view(s)
+            refreshHairdresserList();
             mainUI.Show();
         }
 
@@ -186,7 +186,7 @@ namespace JLLSco.Controllers
             }
         }
 
-        private void handleHairdresserExpand(object sender, RoutedEventArgs e)
+        private void refreshHairdresserList()
         {
 
             mainUI.hairdresserList.Items.Clear();
@@ -212,19 +212,15 @@ namespace JLLSco.Controllers
                 mainUI.SettingsBox.Visibility = Visibility.Hidden;
                 mainUI.currentDay.Visibility = Visibility.Hidden;
             }
-
         }
 
         private void handleSwitchToEditUserHandler(object sender, RoutedEventArgs e)
         {
-
             runOnce = false;
         }
 
         private void handleAvailabilityChange(object sender, RoutedEventArgs e)
         {
-
-
         }
 
         private void handleApplyButtonClick(object sender, RoutedEventArgs e)
@@ -252,10 +248,8 @@ namespace JLLSco.Controllers
                 avail = "Unavailable";
 
             }
-
             handler.updateAvailability(handler.getEmailFromName(name[0].ToString(), name[1].ToString()), today, selectedTime, avail);
             mainUI.currentStatus.Content = avail;
-
         }
 
         private void timeSlotClickHandler(object sender, RoutedEventArgs e)
@@ -278,7 +272,6 @@ namespace JLLSco.Controllers
                 {
                     a = i;
                 }
-
             }
 
             switch (a)
@@ -322,10 +315,7 @@ namespace JLLSco.Controllers
                     mainUI.radioBreak.IsChecked = false;
                     mainUI.radioUnavail.IsChecked = false;
                     mainUI.currentStatus.Content = "Current Status: Not Set";
-
-
                     break;
-
             }
 
 
@@ -406,10 +396,7 @@ namespace JLLSco.Controllers
             {
                 mainUI.five1.IsEnabled = false;
             }
-
             mainUI.timeSlots_Copy.Visibility = Visibility.Visible;
-
-        
         }
     }
 }

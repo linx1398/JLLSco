@@ -20,15 +20,19 @@ namespace JLLSco.Views
         {
             switchToAdminUIButton.Click += handler;
         }
+
         public void AddSwitchToUserUIButtonHandler(RoutedEventHandler handler)
         {
             switchToUserUIButton.Click += handler;
         }
+
         public void AddUserListSelectionChangedHandler(SelectionChangedEventHandler handler)
         {
             UserList.SelectionChanged += handler;
         }
-        public void addTimeSlotHandler(RoutedEventHandler handler) {
+
+        public void addTimeSlotHandler(RoutedEventHandler handler) 
+        {
             nine.Click += handler;
             ninethirty.Click += handler;
             ten.Click += handler;
@@ -47,54 +51,54 @@ namespace JLLSco.Views
             fourthirty.Click += handler;
             five.Click += handler;
         }
+
         public void AddCreateUserButtonHandler(RoutedEventHandler handler)
         {
             createUserButton.Click += handler;
         }
+
         private void openLoginInformationWindow_Click(object sender, RoutedEventArgs e)
         {
             LoginInformationWindow loginInformationWindow = new LoginInformationWindow();
             loginInformationWindow.Owner = this;
             loginInformationWindow.ShowDialog();
         }
+
         public void AddDeletedUserHandler(RoutedEventHandler handler)
         {
             deleteUserBttn.Click += handler;
         }
-        public void AddExpanderHairdresserHandler(RoutedEventHandler handler) {
-            expanderHairdresser.Expanded += handler;
-        }
+
         public void AddTabChangeHandler(MouseButtonEventHandler handler)
         {
-
             availableTab.MouseLeftButtonUp += handler;
         }
+
         public void AddTabEditUserHandler(MouseButtonEventHandler handler)
         {
-
             editUsers.MouseLeftButtonUp += handler;
-            
         }
-        public void addCalanderHandler() {
 
+        public void addCalanderHandler() 
+        {
             calendar.SelectedDatesChanged +=calendar_SelectedDatesChanged;
         }
+
         private void calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-
             currentDay.Visibility = Visibility.Visible;
             timeSlots.Visibility = Visibility.Visible;
             DateTime date = (DateTime)calendar.SelectedDate;
             currentDay.Content = date.DayOfWeek.ToString();
         }
-        public void addApplyHandler(RoutedEventHandler handler) {
 
-            applyAvailable.Click += handler;
-        
+        public void addApplyHandler(RoutedEventHandler handler) 
+        {
+            applyAvailable.Click += handler;        
         }
 
-        public void addAppointmentsHandler(RoutedEventHandler handler) {
-
+        public void addAppointmentsHandler(RoutedEventHandler handler) 
+        {
             nine1.Click += handler;
             ninethirty1.Click += handler;
             ten1.Click += handler;
@@ -111,8 +115,7 @@ namespace JLLSco.Views
             threethirty1.Click += handler;
             four1.Click += handler;
             fourthirty1.Click += handler;
-            five1.Click += handler;
-        
+            five1.Click += handler;        
         }
 
         public void addFindAppointHandler(RoutedEventHandler handler) {

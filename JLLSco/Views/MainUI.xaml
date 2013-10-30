@@ -127,15 +127,13 @@
                         <ColumnDefinition />
                         <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
-                    <Expander Header="Select a Hairdresser" Margin="20,31,0,156" x:Name="expanderHairdresser">
-                        <Grid>
-                            <GroupBox Header="Hairdressers" Margin="10" Grid.Column="0">
-                                <ListBox x:Name="hairdresserList" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
-                            </GroupBox>
+                    <GroupBox Header="Available Hairdressers" Margin="10,46,10,40" Grid.Column="0">
+                        <Grid Margin="0,-34,0,-31">
+                            <ListBox x:Name="hairdresserList" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                         </Grid>
-                    </Expander>
-                    <DatePicker HorizontalAlignment="Center" VerticalAlignment="Top" Width="204" Margin="36,386,77,0" x:Name="PickAppointment"/>
-                    <ListBox HorizontalAlignment="Left" Height="475" Margin="10,69,0,0" VerticalAlignment="Top" Width="133" x:Name="timeSlots_Copy" Grid.Column="1">
+                    </GroupBox>
+                    <DatePicker Margin="10,10,10,0" x:Name="PickAppointment" Background="{x:Null}" BorderThickness="0" VerticalAlignment="Top"/>
+                    <ListBox HorizontalAlignment="Left" Height="426" Margin="10,69,0,0" VerticalAlignment="Top" Width="133" x:Name="timeSlots_Copy" Grid.Column="1">
                         <Button Content="9am" x:Name="nine1"/>
                         <Button Content="930am" x:Name="ninethirty1"/>
                         <Button Content="10am" x:Name="ten1"/>
@@ -154,7 +152,7 @@
                         <Button Content="430pm" x:Name="fourthirty1"/>
                         <Button Content="5pm" x:Name="five1"/>
                     </ListBox>
-                    <Button Content="Find Availabilities" HorizontalAlignment="Left" Margin="80,497,0,0" VerticalAlignment="Top" Width="117" x:Name="FindAvail"/>
+                    <Button Content="Find Availabilities" HorizontalAlignment="Center" Margin="10,0,10,10" VerticalAlignment="Bottom" x:Name="FindAvail" Width="297"/>
                 </Grid>
             </TabItem>
             <TabItem Header="View Your Appointments">
