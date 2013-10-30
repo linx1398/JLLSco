@@ -33,7 +33,6 @@ namespace JLLSco.Controllers
             mainUI.AddSwitchToUserUIButtonHandler(handleSwitchToUserUIButton_Click);
             mainUI.AddCreateUserButtonHandler(handleCreateUserButton_Click);
             mainUI.AddDeletedUserHandler(handleDeleteUser_Click);
-            mainUI.AddTabChangeHandler(handleAvailableTabFocus);
             mainUI.AddTabEditUserHandler(handleSwitchToEditUserHandler);
             mainUI.addCalanderHandler();
             mainUI.addTimeSlotHandler(timeSlotClickHandler);
@@ -44,6 +43,7 @@ namespace JLLSco.Controllers
 
             //Show view(s)
             refreshHairdresserList();
+            refreshHairdresserAvailabilityList();
             mainUI.Show();
         }
 
@@ -197,7 +197,7 @@ namespace JLLSco.Controllers
             }
         }
 
-        private void handleAvailableTabFocus(object sender, RoutedEventArgs e)
+        private void refreshHairdresserAvailabilityList()
         {
             if (!runOnce)
             {

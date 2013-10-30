@@ -116,10 +116,6 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="135*"/>
-            <ColumnDefinition Width="353*"/>
-        </Grid.ColumnDefinitions>
         <TabControl Margin="10,0,10,10" x:Name="userControls" Visibility="Hidden" Grid.ColumnSpan="2">
             <TabItem Header="Make Appointment">
                 <Grid Background="WhiteSmoke" Margin="2,-3,-2,3">
@@ -168,12 +164,13 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <TabControl Margin="10,0" x:Name="adminControls"  Visibility="Visible" IsEnabled="False" Grid.ColumnSpan="2">
-            <TabItem Header="Edit Users" x:Name="editUsers">
+        <TabControl Margin="10,0" x:Name="adminControls"  Visibility="Visible" IsEnabled="True" Grid.ColumnSpan="2">
+            <TabItem Header="View Users" x:Name="editUsers">
                 <Grid Background="WhiteSmoke" Margin="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*" />
-                        <ColumnDefinition Width="20*" />
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <GroupBox Header="Current Users" Margin="10,10,10,40" Grid.Column="0">
                         <ListBox Margin="0,0,0,-28" x:Name="UserList" Grid.Column="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
@@ -196,17 +193,17 @@
                     <Button x:Name="deleteUserBttn" Content="Delete User" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="125" Grid.Column="0"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Edit Availabilties" x:Name="availableTab">
-                <Grid Background="WhiteSmoke" Margin="-9,0,9,0">
+            <TabItem Header="Edit Availabilty" x:Name="availableTab">
+                <Grid Background="WhiteSmoke" Margin="10,0,10,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Header="Current Users" Margin="10" Grid.Column="0">
-                        <ListBox Margin="0,10,0,166" x:Name="HairDresserList" Grid.Column="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                    <GroupBox Header="SELECT A HAIRDRESSER" Margin="10,10,10,40" Grid.Column="0">
+                        <ListBox Margin="0,10,0,4" x:Name="HairDresserList" Grid.Column="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                     </GroupBox>
-                    <ListBox Grid.Column="1" Margin="0,49,0,12" Width="133" x:Name="timeSlots">
+                    <ListBox Grid.Column="1" Margin="0,220,0,10" x:Name="timeSlots">
                         <Button Content="9am" x:Name="nine"/>
                         <Button Content="930am" x:Name="ninethirty"/>
                         <Button Content="10am" x:Name="ten"/>
@@ -226,23 +223,19 @@
                         <Button Content="5pm" x:Name="five"/>
                         <Button Content="ALL DAY"/>
                     </ListBox>
-                    <Label Content="Monday" Grid.Column="1" Margin="0,10,0,0" x:Name="currentDay" HorizontalContentAlignment="Center" FontSize="18" Foreground="#FFFFAD54" VerticalAlignment="Top"/>
-                    <Calendar HorizontalAlignment="Left" Margin="34,362,0,0" VerticalAlignment="Top" x:Name="calendar"/>
-                    <GroupBox Grid.Column="2" Header="Availability" Margin="10" x:Name="SettingsBox">
-                        <ListView Margin="0" BorderThickness="0">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn/>
-                                </GridView>
-                            </ListView.View>
-                            <RadioButton Content="Available" HorizontalAlignment="Left" Width="130" Margin="0,0,-110,0" Height="22" x:Name="radioAvail"/>
-                            <RadioButton Content="Booked" HorizontalAlignment="Left" Width="130" Margin="0,0,-110,0" Height="22" x:Name="radioBooked"/>
-                            <RadioButton Content="On Break" HorizontalAlignment="Left" Width="130" Margin="0,0,-110,0" Height="22" x:Name="radioBreak"/>
-                            <RadioButton Content="Unavailable" HorizontalAlignment="Left" Width="130" Margin="0,0,-110,0" Height="22" x:Name="radioUnavail"/>
-                            <Button Content="Apply" HorizontalAlignment="Left" Width="123" Margin="0,0,-103,0" x:Name="applyAvailable" />
-                            <Label Content="Current Status: Available" HorizontalAlignment="Left" Width="172" RenderTransformOrigin="0.75,4.385" Margin="0,0,-152,0" Height="66" x:Name="currentStatus"/>
-                        </ListView>
+                    <Label Content="Monday" Grid.Column="1" Margin="0,181,0,0" x:Name="currentDay" HorizontalContentAlignment="Center" FontSize="18" Foreground="#FFFFAD54" VerticalAlignment="Top"/>
+                    <Calendar HorizontalAlignment="Left" Margin="61,10,0,0" VerticalAlignment="Top" x:Name="calendar" Grid.Column="1" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" BorderThickness="0"/>
+                    <GroupBox Grid.Column="2" Header="CHANGE AVAILABILITY" Margin="10,10,10,40" x:Name="SettingsBox">
+                        <ListBox BorderThickness="0">
+                            <RadioButton Content="Available" Margin="0,0,-239,0" Height="22" x:Name="radioAvail" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <RadioButton Content="Booked" Margin="0,0,-239,0" Height="22" x:Name="radioBooked" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <RadioButton Content="On Break" Margin="0,0,-239,0" Height="22" x:Name="radioBreak" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <RadioButton Content="Unavailable" Margin="0,0,-239,0" Height="22" x:Name="radioUnavail" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Label Content="Current Status: Available"  x:Name="currentStatus"/>
+                        </ListBox>
                     </GroupBox>
+                    <Button Content="Refresh" Margin="10,519,10,10"/>
+                    <Button Content="Apply" x:Name="applyAvailable" Grid.Column="2" Margin="10,519,10,10" />
 
                 </Grid>
             </TabItem>
