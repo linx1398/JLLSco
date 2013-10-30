@@ -14,13 +14,13 @@
   <Class Name="JLLSco.Models.RemoteDBHandler" BaseTypeListCollapsed="true">
     <Position X="3.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAAAAIAAAAAAAggAABAAEAAAAQAEAEBAAIEAAAAQQ=</HashCode>
+      <HashCode>BAAAAAAIAAAAAAAgAAABAAEAAAAQAEAEBAAIEAAAAQQ=</HashCode>
       <FileName>Models\RemoteDBHandler.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="JLLSco.Views.LoginInformationWindow" Collapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+  <Class Name="JLLSco.Views.LoginInformationWindow">
+    <Position X="0.75" Y="0.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\LoginInformationWindow.xaml.cs</FileName>
@@ -34,7 +34,7 @@
     </TypeIdentifier>
   </Class>
   <Interface Name="JLLSco.Models.DBHandler">
-    <Position X="9.5" Y="1" Width="1.5" />
+    <Position X="5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAIAAAAAAAgAAAAAAEAAAAAAEAEBAAIEAAAAQQ=</HashCode>
       <FileName>Models\DBHandler.cs</FileName>

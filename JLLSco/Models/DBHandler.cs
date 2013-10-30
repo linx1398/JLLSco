@@ -4,8 +4,9 @@ namespace JLLSco.Models
 {
     public interface DBHandler
     {
-        void connectToDB();
         void testConnection();
+        void connectToDB();
+        void closeConnection();
         void sendQuery(string request);
         string getResponse();
         ArrayList getUserList();

@@ -15,7 +15,7 @@ namespace JLLSco.Models
         NpgsqlConnection connection;
 
 
-        public void connect()
+        public void connectToDB()
         {
             //Build connection string
             string server, databaseName, uid, password, port, ssl;
@@ -111,7 +111,7 @@ namespace JLLSco.Models
 
         public ArrayList getUserList()
         {
-            connect();
+            connectToDB();
             ArrayList userNames = new ArrayList();
             NpgsqlCommand command = new NpgsqlCommand("select fname, sname from users", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
@@ -129,7 +129,7 @@ namespace JLLSco.Models
 
         public ArrayList getUserList(string type)
         {
-            connect();
+            connectToDB();
             ArrayList userNames = new ArrayList();
             NpgsqlCommand command = new NpgsqlCommand("select fname, sname from users WHERE type = '" + type + "'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
@@ -148,7 +148,7 @@ namespace JLLSco.Models
         public ArrayList getUserDetails(string fName, string sName) {
 
             ArrayList details = new ArrayList();
-            connect();
+            connectToDB();
             NpgsqlCommand command = new NpgsqlCommand("SELECT fname, sname, email, phone, type FROM users WHERE fname = '" +fName + "' AND sname = '"+sName + "'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
             while (dataReader.Read())
@@ -164,7 +164,7 @@ namespace JLLSco.Models
         }
 
         public void deleteUser(string email) {
-            connect();
+            connectToDB();
             NpgsqlCommand command = new NpgsqlCommand("DELETE FROM users WHERE email='"+email+"'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
 
@@ -174,7 +174,7 @@ namespace JLLSco.Models
 
         public void addNewUser(string fName, string sName, string email, string pass, string phone, string type)
         {
-            connect();
+            connectToDB();
             NpgsqlCommand command = new NpgsqlCommand("INSERT INTO users VALUES('" + email + "', '" + fName + "', '" + sName + "', '" + pass + "', '" + phone + "', '" + type + "');", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
 
@@ -182,13 +182,8 @@ namespace JLLSco.Models
             closeConnection();
         }
 
-        public void connectToDB()
-        {
-            throw new NotImplementedException();
-        }
-
         public ArrayList findAvailability(string email, string date, string time) {
-            connect();
+            connectToDB();
             ArrayList details = new ArrayList();
             NpgsqlCommand command = new NpgsqlCommand("SELECT available, break, booked, unavailable FROM Availability WHERE email = '" + email + "' AND date = '" + date + "' AND time = '" + time + "'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
@@ -208,7 +203,7 @@ namespace JLLSco.Models
 
         public string getEmailFromName(string fname, string sname) {
             ArrayList details = new ArrayList();
-            connect();
+            connectToDB();
             NpgsqlCommand command = new NpgsqlCommand("SELECT email FROM users WHERE fname = '" + fname + "' AND sname = '" + sname + "'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
             while (dataReader.Read())
@@ -227,7 +222,7 @@ namespace JLLSco.Models
         }
 
         public void updateAvailability(string email, string date, string time, string avail) {
-            connect();
+            connectToDB();
             NpgsqlCommand command;
             switch (avail) { 
                 case "Available":
@@ -257,7 +252,7 @@ namespace JLLSco.Models
 
         public ArrayList getAvailability(string email, string date){
 
-            connect();
+            connectToDB();
             ArrayList details = new ArrayList();
             NpgsqlCommand command = new NpgsqlCommand("SELECT time FROM Availability WHERE email = '" + email + "' AND date = '" + date + "'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();

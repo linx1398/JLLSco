@@ -199,13 +199,14 @@
             <TabItem Header="Edit Availabilties" x:Name="availableTab">
                 <Grid Background="WhiteSmoke" Margin="-9,0,9,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="233*" />
-                        <ColumnDefinition Width="677*" />
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Header="Current Users" Margin="10,10,10,23" Grid.Column="0">
+                    <GroupBox Header="Current Users" Margin="10" Grid.Column="0">
                         <ListBox Margin="0,10,0,166" x:Name="HairDresserList" Grid.Column="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                     </GroupBox>
-                    <ListBox Grid.Column="1" HorizontalAlignment="Left" Height="475" Margin="46,66,0,0" VerticalAlignment="Top" Width="133" x:Name="timeSlots">
+                    <ListBox Grid.Column="1" Margin="0,49,0,12" Width="133" x:Name="timeSlots">
                         <Button Content="9am" x:Name="nine"/>
                         <Button Content="930am" x:Name="ninethirty"/>
                         <Button Content="10am" x:Name="ten"/>
@@ -225,10 +226,10 @@
                         <Button Content="5pm" x:Name="five"/>
                         <Button Content="ALL DAY"/>
                     </ListBox>
-                    <Label Content="Monday" Grid.Column="1" HorizontalAlignment="Left" Margin="56,21,0,0" VerticalAlignment="Top" Width="123" x:Name="currentDay" HorizontalContentAlignment="Center" FontSize="18" Foreground="#FFFFAD54"/>
+                    <Label Content="Monday" Grid.Column="1" Margin="0,10,0,0" x:Name="currentDay" HorizontalContentAlignment="Center" FontSize="18" Foreground="#FFFFAD54" VerticalAlignment="Top"/>
                     <Calendar HorizontalAlignment="Left" Margin="34,362,0,0" VerticalAlignment="Top" x:Name="calendar"/>
-                    <GroupBox Grid.Column="1" Header="Settings" HorizontalAlignment="Left" Margin="296,15,0,0" VerticalAlignment="Top" Height="265" Width="383" x:Name="SettingsBox">
-                        <ListView HorizontalAlignment="Left" Height="289" VerticalAlignment="Top" Width="381" Margin="-296,-16,0,0">
+                    <GroupBox Grid.Column="2" Header="Availability" Margin="10" x:Name="SettingsBox">
+                        <ListView Margin="0" BorderThickness="0">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn/>
