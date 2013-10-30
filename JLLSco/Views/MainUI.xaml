@@ -120,7 +120,7 @@
             <ColumnDefinition Width="135*"/>
             <ColumnDefinition Width="353*"/>
         </Grid.ColumnDefinitions>
-        <TabControl Margin="10,0,10,10" x:Name="userControls" Visibility="Visible" Grid.ColumnSpan="2">
+        <TabControl Margin="10,0,10,10" x:Name="userControls" Visibility="Hidden" Grid.ColumnSpan="2">
             <TabItem Header="Make Appointment">
                 <Grid Background="WhiteSmoke" Margin="2,-3,-2,3">
                     <Grid.ColumnDefinitions>
@@ -168,7 +168,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <TabControl Margin="10,0" x:Name="adminControls"  Visibility="Hidden" IsEnabled="False" Grid.ColumnSpan="2">
+        <TabControl Margin="10,0" x:Name="adminControls"  Visibility="Visible" IsEnabled="False" Grid.ColumnSpan="2">
             <TabItem Header="Edit Users" x:Name="editUsers">
                 <Grid Background="WhiteSmoke" Margin="0">
                     <Grid.ColumnDefinitions>

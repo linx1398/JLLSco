@@ -107,7 +107,6 @@
     <Compile Include="Views\MainUI.xaml.cs">
       <DependentUpon>MainUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
