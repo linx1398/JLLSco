@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="___No_Name_" x:Class="JLLSco.Views.MainUI"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:System="clr-namespace:System;assembly=mscorlib" mc:Ignorable="d" x:Name="___No_Name_" x:Class="JLLSco.Views.MainUI"
         Title="JLLSco Hairdressing" SnapsToDevicePixels="True"
         ShowIconOnTitleBar="True"
-        MinWidth="640" MinHeight="480" Icon="ScissorsIcon2.ico" d:DesignHeight="605" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" d:DesignWidth="884">
+        MinWidth="640" MinHeight="480" Icon="ScissorsIcon2.ico" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" Width="984" Height="646">
     <Controls:MetroWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,6 +18,58 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
+                <Style.BasedOn>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="MinHeight" Value="25"/>
+                        <Setter Property="Margin" Value="0"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border x:Name="Border" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
+                                        <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Margin="5,0,0,0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource AccentColorBrush}"/>
+                                            <Setter Property="Foreground" Value="{DynamicResource AccentSelectedColorBrush}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" TargetName="Border">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource AccentColor3}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Foreground" Value="{DynamicResource GrayBrush5}"/>
+                                        </Trigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsEnabled" Value="False"/>
+                                                <Condition Property="IsSelected" Value="True"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource GrayBrush5}"/>
+                                            <Setter Property="Foreground" Value="{DynamicResource AccentSelectedColorBrush}"/>
+                                        </MultiTrigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsSelected" Value="True"/>
+                                                <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="Background" TargetName="Border">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="{DynamicResource AccentColor2}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </MultiTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Style.BasedOn>
+            </Style>
         </ResourceDictionary>
     </Controls:MetroWindow.Resources>
     <Controls:MetroWindow.WindowCommands>
@@ -64,22 +116,45 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
     <Grid>
-        <TabControl Margin="10,0,10,10" x:Name="userControls" Visibility="Visible">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="135*"/>
+            <ColumnDefinition Width="353*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Margin="10,0,10,10" x:Name="userControls" Visibility="Visible" Grid.ColumnSpan="2">
             <TabItem Header="Make Appointment">
-                <Grid Background="WhiteSmoke">
+                <Grid Background="WhiteSmoke" Margin="2,-3,-2,3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
-                    <Button Content="Test Database" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="96" x:Name="testDBButton" Grid.Column="0" HorizontalAlignment="Center"/>
-                    <DatePicker HorizontalAlignment="Center" Margin="126,274,238,0" VerticalAlignment="Top" Width="204" Grid.Column="1"/>
-                    <Expander Header="Select a Hairdresser" Margin="10,10,10,76" Grid.Column="0" x:Name="expanderHairdresser">
+                    <Expander Header="Select a Hairdresser" Margin="20,31,0,156" x:Name="expanderHairdresser">
                         <Grid>
                             <GroupBox Header="Hairdressers" Margin="10" Grid.Column="0">
                                 <ListBox x:Name="hairdresserList" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                             </GroupBox>
                         </Grid>
                     </Expander>
+                    <DatePicker HorizontalAlignment="Center" VerticalAlignment="Top" Width="204" Margin="36,386,77,0" x:Name="PickAppointment"/>
+                    <ListBox HorizontalAlignment="Left" Height="475" Margin="10,69,0,0" VerticalAlignment="Top" Width="133" x:Name="timeSlots_Copy" Grid.Column="1">
+                        <Button Content="9am" x:Name="nine1"/>
+                        <Button Content="930am" x:Name="ninethirty1"/>
+                        <Button Content="10am" x:Name="ten1"/>
+                        <Button Content="1030am" x:Name="tenthirty1"/>
+                        <Button Content="11am" x:Name="eleven1"/>
+                        <Button Content="1130am" x:Name="eleventhirty1"/>
+                        <Button Content="12pm" x:Name="twelve1"/>
+                        <Button Content="1230pm" x:Name="twelvethirty1"/>
+                        <Button Content="1pm" x:Name="one1"/>
+                        <Button Content="130pm" x:Name="onethirty1"/>
+                        <Button Content="2pm" x:Name="two1"/>
+                        <Button Content="230pm" x:Name="twothirty1"/>
+                        <Button Content="3pm" x:Name="three1"/>
+                        <Button Content="330pm" x:Name="threethirty1"/>
+                        <Button Content="4pm" x:Name="four1"/>
+                        <Button Content="430pm" x:Name="fourthirty1"/>
+                        <Button Content="5pm" x:Name="five1"/>
+                    </ListBox>
+                    <Button Content="Find Availabilities" HorizontalAlignment="Left" Margin="80,497,0,0" VerticalAlignment="Top" Width="117" x:Name="FindAvail"/>
                 </Grid>
             </TabItem>
             <TabItem Header="View Your Appointments">
@@ -95,8 +170,8 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <TabControl Margin="10,0" x:Name="adminControls"  Visibility="Hidden" IsEnabled="False">
-            <TabItem Header="Edit Users">
+        <TabControl Margin="10,0" x:Name="adminControls"  Visibility="Hidden" IsEnabled="False" Grid.ColumnSpan="2">
+            <TabItem Header="Edit Users" x:Name="editUsers">
                 <Grid Background="WhiteSmoke" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*" />
@@ -123,18 +198,56 @@
                     <Button x:Name="deleteUserBttn" Content="Delete User" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="125" Grid.Column="0"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Edit Appointments">
-                <Grid Background="WhiteSmoke">
-                    <Label Content="Work in progress" HorizontalAlignment="Center" Margin="22,42,0,0" VerticalAlignment="Center" FontSize="30"/>
-                    <Controls:ProgressRing IsActive="True" Margin="356,278,340,115" />
+            <TabItem Header="Edit Availabilties" x:Name="availableTab">
+                <Grid Background="WhiteSmoke" Margin="-9,0,9,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="233*" />
+                        <ColumnDefinition Width="677*" />
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Current Users" Margin="10,10,10,23" Grid.Column="0">
+                        <ListBox Margin="0,10,0,166" x:Name="HairDresserList" Grid.Column="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                    </GroupBox>
+                    <ListBox Grid.Column="1" HorizontalAlignment="Left" Height="475" Margin="46,66,0,0" VerticalAlignment="Top" Width="133" x:Name="timeSlots">
+                        <Button Content="9am" x:Name="nine"/>
+                        <Button Content="930am" x:Name="ninethirty"/>
+                        <Button Content="10am" x:Name="ten"/>
+                        <Button Content="1030am" x:Name="tenthirty"/>
+                        <Button Content="11am" x:Name="eleven"/>
+                        <Button Content="1130am" x:Name="eleventhirty"/>
+                        <Button Content="12pm" x:Name="twelve"/>
+                        <Button Content="1230pm" x:Name="twelvethirty"/>
+                        <Button Content="1pm" x:Name="one"/>
+                        <Button Content="130pm" x:Name="onethirty"/>
+                        <Button Content="2pm" x:Name="two"/>
+                        <Button Content="230pm" x:Name="twothirty"/>
+                        <Button Content="3pm" x:Name="three"/>
+                        <Button Content="330pm" x:Name="threethirty"/>
+                        <Button Content="4pm" x:Name="four"/>
+                        <Button Content="430pm" x:Name="fourthirty"/>
+                        <Button Content="5pm" x:Name="five"/>
+                        <Button Content="ALL DAY"/>
+                    </ListBox>
+                    <Label Content="Monday" Grid.Column="1" HorizontalAlignment="Left" Margin="56,21,0,0" VerticalAlignment="Top" Width="123" x:Name="currentDay" HorizontalContentAlignment="Center" FontSize="18" Foreground="#FFFFAD54"/>
+                    <Calendar HorizontalAlignment="Left" Margin="34,362,0,0" VerticalAlignment="Top" x:Name="calendar"/>
+                    <GroupBox Grid.Column="1" Header="Settings" HorizontalAlignment="Left" Margin="296,15,0,0" VerticalAlignment="Top" Height="265" Width="383" x:Name="SettingsBox">
+                        <ListView HorizontalAlignment="Left" Height="289" VerticalAlignment="Top" Width="381" Margin="-296,-16,0,0">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn/>
+                                </GridView>
+                            </ListView.View>
+                            <RadioButton Content="Available" HorizontalAlignment="Left" Width="130" Margin="0,0,-110,0" Height="22" x:Name="radioAvail"/>
+                            <RadioButton Content="Booked" HorizontalAlignment="Left" Width="130" Margin="0,0,-110,0" Height="22" x:Name="radioBooked"/>
+                            <RadioButton Content="On Break" HorizontalAlignment="Left" Width="130" Margin="0,0,-110,0" Height="22" x:Name="radioBreak"/>
+                            <RadioButton Content="Unavailable" HorizontalAlignment="Left" Width="130" Margin="0,0,-110,0" Height="22" x:Name="radioUnavail"/>
+                            <Button Content="Apply" HorizontalAlignment="Left" Width="123" Margin="0,0,-103,0" x:Name="applyAvailable" />
+                            <Label Content="Current Status: Available" HorizontalAlignment="Left" Width="172" RenderTransformOrigin="0.75,4.385" Margin="0,0,-152,0" Height="66" x:Name="currentStatus"/>
+                        </ListView>
+                    </GroupBox>
+
                 </Grid>
             </TabItem>
-            <TabItem Header="Change Account Settings">
-                <Grid Background="WhiteSmoke">
-                    <Label Content="Work in progress" HorizontalAlignment="Center" Margin="22,42,0,0" VerticalAlignment="Center" FontSize="30"/>
-                    <Controls:ProgressRing IsActive="True" Margin="356,278,340,115" />
-                </Grid>
-            </TabItem>
+
         </TabControl>
     </Grid>
 </Controls:MetroWindow>

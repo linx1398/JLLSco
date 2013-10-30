@@ -15,7 +15,6 @@ namespace JLLSco.Models
         NpgsqlConnection connection;
 
 
-
         public void connect()
         {
 
@@ -54,7 +53,6 @@ namespace JLLSco.Models
             }
 
         }
-
 
         public void closeConnection()
         {
@@ -139,7 +137,6 @@ namespace JLLSco.Models
 
         }
 
-
         public ArrayList getUserList(string type)
         {
             connect();
@@ -182,8 +179,6 @@ namespace JLLSco.Models
         
         }
 
-
-
         public void deleteUser(string email) {
             connect();
             NpgsqlCommand command = new NpgsqlCommand("DELETE FROM users WHERE email='"+email+"'", connection);
@@ -209,6 +204,99 @@ namespace JLLSco.Models
         public void connectToDB()
         {
             throw new NotImplementedException();
+        }
+
+        public ArrayList findAvailability(string email, string date, string time) {
+
+            connect();
+            ArrayList details = new ArrayList();
+            NpgsqlCommand command = new NpgsqlCommand("SELECT available, break, booked, unavailable FROM Availability WHERE email = '" + email + "' AND date = '" + date + "' AND time = '" + time + "'", connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                for (int i = 0; i < dr.FieldCount; i++)
+                {
+                    //Debug.WriteLine("{0} \t", dr[i]);
+                    details.Add(dr[i].ToString());
+                    //Debug.WriteLine(details[i].ToString());
+                }
+
+            }
+            closeConnection();
+            return details;
+        }
+
+        public string getEmailFromName(string fname, string sname) {
+
+            ArrayList details = new ArrayList();
+            connect();
+            NpgsqlCommand command = new NpgsqlCommand("SELECT email FROM users WHERE fname = '" + fname + "' AND sname = '" + sname + "'", connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                for (int i = 0; i < dr.FieldCount; i++)
+                {
+                    //Debug.WriteLine("{0} \t", dr[i]);
+                    details.Add(dr[i].ToString());
+                    Debug.WriteLine(details[i].ToString());
+                }
+
+            }
+            closeConnection();
+
+            return details[0].ToString();
+        }
+
+        public void updateAvailability(string email, string date, string time, string avail) {
+            connect();
+            NpgsqlCommand command;
+            switch (avail) { 
+                case "Available":
+                     command = new NpgsqlCommand("INSERT INTO Availability VALUES(DEFAULT, '" + email + "', '" + date + "', '" + time + "', 't', 'f', 'f', 'f')", connection);
+                    break;
+                case "Booked":
+                     command = new NpgsqlCommand("INSERT INTO Availability VALUES(DEFAULT, '" + email + "', '" + date + "', '" + time + "', 'f', 'f', 't', 'f')", connection);
+                    break;
+                case "On Break":
+                     command = new NpgsqlCommand("INSERT INTO Availability VALUES(DEFAULT, '" + email + "', '" + date + "', '" + time + "', 'f', 't', 'f', 'f')", connection);
+                    break;
+                case "Unavailable":
+                     command = new NpgsqlCommand("INSERT INTO Availability VALUES(DEFAULT, '" + email + "', '" + date + "', '" + time + "', 'f', 'f', 'f', 't')", connection);
+                    break;
+                default:
+                    Debug.WriteLine("ERROR");
+                    command = new NpgsqlCommand("INSERT INTO Availability VALUES(DEFAULT, '" + email + "', '" + date + "', '" + time + "', 'f', 'f', 'f', 'f')", connection);
+                    break;
+
+            
+            }
+            
+            NpgsqlDataReader dr = command.ExecuteReader();
+
+            Debug.WriteLine("Availability added");
+            closeConnection();
+        
+        }
+
+        public ArrayList getAvailability(string email, string date){
+
+            connect();
+            ArrayList details = new ArrayList();
+            NpgsqlCommand command = new NpgsqlCommand("SELECT time FROM Availability WHERE email = '" + email + "' AND date = '" + date + "'", connection);
+            NpgsqlDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                for (int i = 0; i < dr.FieldCount; i++)
+                {
+                    //Debug.WriteLine("{0} \t", dr[i]);
+                    details.Add(dr[i].ToString());
+                    Debug.WriteLine(details[i].ToString());
+                }
+
+            }
+            closeConnection();
+            return details;
+        
         }
     }
 
