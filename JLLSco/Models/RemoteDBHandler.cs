@@ -14,6 +14,10 @@ namespace JLLSco.Models
 
         NpgsqlConnection connection;
 
+        public RemoteDBHandler()
+        {
+            connectToDB();
+        }
 
         public void connectToDB()
         {
@@ -111,7 +115,6 @@ namespace JLLSco.Models
 
         public ArrayList getUserList()
         {
-            connectToDB();
             ArrayList userNames = new ArrayList();
             NpgsqlCommand command = new NpgsqlCommand("select fname, sname from users", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
@@ -123,13 +126,11 @@ namespace JLLSco.Models
                     userNames.Add(dataReader[i].ToString() + " " + dataReader[i+1].ToString());
                 }
             }
-            closeConnection();
             return userNames;
         }
 
         public ArrayList getUserList(string type)
         {
-            connectToDB();
             ArrayList userNames = new ArrayList();
             NpgsqlCommand command = new NpgsqlCommand("select fname, sname from users WHERE type = '" + type + "'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
@@ -141,14 +142,12 @@ namespace JLLSco.Models
                     userNames.Add(dataReader[i].ToString() + " " + dataReader[i + 1].ToString());
                 }
             }
-            closeConnection();
             return userNames;
         }
 
         public ArrayList getUserDetails(string fName, string sName) {
 
             ArrayList details = new ArrayList();
-            connectToDB();
             NpgsqlCommand command = new NpgsqlCommand("SELECT fname, sname, email, phone, type FROM users WHERE fname = '" +fName + "' AND sname = '"+sName + "'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
             while (dataReader.Read())
@@ -159,31 +158,25 @@ namespace JLLSco.Models
                     details.Add(dataReader[i].ToString());
                 }
             }
-            closeConnection();
             return details;
         }
 
         public void deleteUser(string email) {
-            connectToDB();
             NpgsqlCommand command = new NpgsqlCommand("DELETE FROM users WHERE email='"+email+"'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
 
             Debug.WriteLine("User deleted");
-            closeConnection();
         }
 
         public void addNewUser(string fName, string sName, string email, string pass, string phone, string type)
         {
-            connectToDB();
             NpgsqlCommand command = new NpgsqlCommand("INSERT INTO users VALUES('" + email + "', '" + fName + "', '" + sName + "', '" + pass + "', '" + phone + "', '" + type + "');", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
 
             Debug.WriteLine("User added");
-            closeConnection();
         }
 
         public ArrayList findAvailability(string email, string date, string time) {
-            connectToDB();
             ArrayList details = new ArrayList();
             NpgsqlCommand command = new NpgsqlCommand("SELECT available, break, booked, unavailable FROM Availability WHERE email = '" + email + "' AND date = '" + date + "' AND time = '" + time + "'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
@@ -197,13 +190,11 @@ namespace JLLSco.Models
                 }
 
             }
-            closeConnection();
             return details;
         }
 
         public string getEmailFromName(string fname, string sname) {
             ArrayList details = new ArrayList();
-            connectToDB();
             NpgsqlCommand command = new NpgsqlCommand("SELECT email FROM users WHERE fname = '" + fname + "' AND sname = '" + sname + "'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
             while (dataReader.Read())
@@ -216,13 +207,11 @@ namespace JLLSco.Models
                 }
 
             }
-            closeConnection();
 
             return details[0].ToString();
         }
 
         public void updateAvailability(string email, string date, string time, string avail) {
-            connectToDB();
             NpgsqlCommand command;
             switch (avail) { 
                 case "Available":
@@ -246,13 +235,11 @@ namespace JLLSco.Models
             NpgsqlDataReader dataReader = command.ExecuteReader();
 
             Debug.WriteLine("Availability added");
-            closeConnection();
         
         }
 
         public ArrayList getAvailability(string email, string date){
 
-            connectToDB();
             ArrayList details = new ArrayList();
             NpgsqlCommand command = new NpgsqlCommand("SELECT time FROM Availability WHERE email = '" + email + "' AND date = '" + date + "'", connection);
             NpgsqlDataReader dataReader = command.ExecuteReader();
@@ -266,7 +253,6 @@ namespace JLLSco.Models
                 }
 
             }
-            closeConnection();
             return details;
         
         }

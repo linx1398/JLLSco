@@ -180,11 +180,11 @@
                     <Label Content="Phone:" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label Content="User Type:" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                     <Label Content="Last Name:" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="firstName" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="lastName" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="email" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="phone" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="85,252,0,0" VerticalAlignment="Top" Width="211" IsSynchronizedWithCurrentItem="False" x:Name="type" Grid.Column="1">
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="viewUsers_FirstNameTextBox" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="viewUsers_LastNameTextBox" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="viewUsers_EmailTextBox" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="85,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" x:Name="viewUsers_PhoneTextBox" Controls:TextboxHelper.ClearTextButton="True" Grid.Column="1"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="85,252,0,0" VerticalAlignment="Top" Width="211" IsSynchronizedWithCurrentItem="False" x:Name="viewUsers_TypeComboBox" Grid.Column="1">
                         <ListBoxItem Content="Admin"/>
                         <ListBoxItem Content="Hairdresser"/>
                         <ListBoxItem Content="User"/>

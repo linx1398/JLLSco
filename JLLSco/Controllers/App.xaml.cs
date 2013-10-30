@@ -28,44 +28,40 @@ namespace JLLSco.Controllers
             mainUI = new Views.MainUI();
 
             //Wire up event handlers
-            mainUI.AddSwitchToAdminUIButtonHandler(handleSwitchToAdminUIButton_Click);
-            mainUI.AddUserListSelectionChangedHandler(handleUserList_SelectionChanged);
-            mainUI.AddSwitchToUserUIButtonHandler(handleSwitchToUserUIButton_Click);
-            mainUI.AddCreateUserButtonHandler(handleCreateUserButton_Click);
-            mainUI.AddDeletedUserHandler(handleDeleteUser_Click);
-            mainUI.AddTabEditUserHandler(handleSwitchToEditUserHandler);
+            mainUI.addSwitchToAdminUIButtonHandler(handleSwitchToAdminUIButton_Click);
+            mainUI.addUserListSelectionChangedHandler(handleUserList_SelectionChanged);
+            mainUI.addSwitchToUserUIButtonHandler(handleSwitchToUserUIButton_Click);
+            mainUI.addCreateUserButtonHandler(handleCreateUserButton_Click);
+            mainUI.addDeleteUserButtonHandler(handleDeleteUserButton_Click);
+            mainUI.addEditUserTabHandler(handleSwitchToEditUserTabHandler);
             mainUI.addCalanderHandler();
-            mainUI.addTimeSlotHandler(timeSlotClickHandler);
-            mainUI.addApplyHandler(handleApplyButtonClick);
-            mainUI.addFindAppointHandler(findApointments);
-            mainUI.timeSlots_Copy.Visibility = Visibility.Hidden;
+            mainUI.addTimeSlotButtonHandler(handleTimeSlotButton_Click);
+            mainUI.addApplyButtonHandler(handleApplyButton_Click);
+            mainUI.addFindAppointmentButtonHandler(findApointmentsButton_Click);
 
-
-            //Show view(s)
+            //Prepare the view(s)
             refreshHairdresserList();
             refreshHairdresserAvailabilityList();
-            mainUI.Show();
-        }
+            mainUI.timeSlots_Copy.Visibility = Visibility.Hidden;
 
-        private void handleTestDBButton(object sender, RoutedEventArgs e)
-        {
-            handler.testConnection();
+            //Show view(s)
+            mainUI.Show();
         }
 
         private void handleCreateUserButton_Click(object sender, RoutedEventArgs e)
         {
-            if (mainUI.firstName.Text != "" && mainUI.lastName.Text != "" && mainUI.email.Text != "" && mainUI.phone.Text != "" && mainUI.type.Text != "")
+            if (mainUI.viewUsers_FirstNameTextBox.Text != "" && mainUI.viewUsers_LastNameTextBox.Text != "" && mainUI.viewUsers_EmailTextBox.Text != "" && mainUI.viewUsers_PhoneTextBox.Text != "" && mainUI.viewUsers_TypeComboBox.Text != "")
             {
-                string fname = mainUI.firstName.Text;
-                string lname = mainUI.lastName.Text;
-                string userEmail = mainUI.email.Text;
-                string phoneNo = mainUI.phone.Text;
+                string fname = mainUI.viewUsers_FirstNameTextBox.Text;
+                string lname = mainUI.viewUsers_LastNameTextBox.Text;
+                string userEmail = mainUI.viewUsers_EmailTextBox.Text;
+                string phoneNo = mainUI.viewUsers_PhoneTextBox.Text;
                 string userType = "";
-                if (mainUI.type.Text == "Admin")
+                if (mainUI.viewUsers_TypeComboBox.Text == "Admin")
                 {
                     userType = "a";
                 }
-                else if (mainUI.type.Text == "Hairdresser")
+                else if (mainUI.viewUsers_TypeComboBox.Text == "Hairdresser")
                 {
                     userType = "h";
                 }
@@ -76,7 +72,7 @@ namespace JLLSco.Controllers
 
                 handler.addNewUser(fname, lname, userEmail, "test", phoneNo, userType);
                 populateUserList();
-                clearForm();
+                mainUI.clearForm();
             }
         }
 
@@ -118,22 +114,22 @@ namespace JLLSco.Controllers
                 string sName = nArray[1];
                 ArrayList details = handler.getUserDetails(fName, sName);
 
-                mainUI.firstName.Text = details[0].ToString();
-                mainUI.lastName.Text = details[1].ToString();
-                mainUI.email.Text = details[2].ToString();
-                mainUI.phone.Text = details[3].ToString();
+                mainUI.viewUsers_FirstNameTextBox.Text = details[0].ToString();
+                mainUI.viewUsers_LastNameTextBox.Text = details[1].ToString();
+                mainUI.viewUsers_EmailTextBox.Text = details[2].ToString();
+                mainUI.viewUsers_PhoneTextBox.Text = details[3].ToString();
                 string t = details[4].ToString();
 
                 switch (t)
                 {
                     case "a":
-                        mainUI.type.Text = "Admin";
+                        mainUI.viewUsers_TypeComboBox.Text = "Admin";
                         break;
                     case "h":
-                        mainUI.type.Text = "Hairdresser";
+                        mainUI.viewUsers_TypeComboBox.Text = "Hairdresser";
                         break;
                     case "u":
-                        mainUI.type.Text = "User";
+                        mainUI.viewUsers_TypeComboBox.Text = "User";
                         break;
                     default:
                         break;
@@ -143,7 +139,7 @@ namespace JLLSco.Controllers
 
 
             }
-            catch (NullReferenceException n)
+            catch (NullReferenceException)
             {
 
                 Debug.WriteLine("Null reference");
@@ -152,27 +148,17 @@ namespace JLLSco.Controllers
 
         }
 
-        private void handleDeleteUser_Click(object sender, RoutedEventArgs e)
+        private void handleDeleteUserButton_Click(object sender, RoutedEventArgs e)
         {
             if (mainUI.UserList.SelectedValue.ToString() != "")
             {
-                handler.deleteUser(mainUI.email.Text);
+                handler.deleteUser(mainUI.viewUsers_EmailTextBox.Text);
                 //mainUI.UserList.SelectedIndex = 0;
                 populateUserList();
-                clearForm();
+                mainUI.clearForm();
             }
 
 
-
-        }
-
-        private void clearForm()
-        {
-            mainUI.firstName.Text = "";
-            mainUI.lastName.Text = "";
-            mainUI.email.Text = "";
-            mainUI.phone.Text = "";
-            mainUI.type.Text = "";
 
         }
 
@@ -214,7 +200,7 @@ namespace JLLSco.Controllers
             }
         }
 
-        private void handleSwitchToEditUserHandler(object sender, RoutedEventArgs e)
+        private void handleSwitchToEditUserTabHandler(object sender, RoutedEventArgs e)
         {
             runOnce = false;
         }
@@ -223,7 +209,7 @@ namespace JLLSco.Controllers
         {
         }
 
-        private void handleApplyButtonClick(object sender, RoutedEventArgs e)
+        private void handleApplyButton_Click(object sender, RoutedEventArgs e)
         {
             string[] name = mainUI.HairDresserList.SelectedValue.ToString().Split();
             string[] date = mainUI.calendar.SelectedDate.ToString().Split();
@@ -252,7 +238,7 @@ namespace JLLSco.Controllers
             mainUI.currentStatus.Content = avail;
         }
 
-        private void timeSlotClickHandler(object sender, RoutedEventArgs e)
+        private void handleTimeSlotButton_Click(object sender, RoutedEventArgs e)
         {
             Button clicked = (Button)sender;
             Debug.WriteLine(clicked.Content.ToString());
@@ -322,7 +308,7 @@ namespace JLLSco.Controllers
 
         }
 
-        private void findApointments(object sender, RoutedEventArgs e) { 
+        private void findApointmentsButton_Click(object sender, RoutedEventArgs e) { 
             string[] name = mainUI.hairdresserList.SelectedValue.ToString().Split();
             string email = handler.getEmailFromName(name[0].ToString(), name[1].ToString());
             string[] date = mainUI.PickAppointment.SelectedDate.ToString().Split();

@@ -16,22 +16,22 @@ namespace JLLSco.Views
             InitializeComponent();
         }
 
-        public void AddSwitchToAdminUIButtonHandler(RoutedEventHandler handler) 
+        public void addSwitchToAdminUIButtonHandler(RoutedEventHandler handler) 
         {
             switchToAdminUIButton.Click += handler;
         }
 
-        public void AddSwitchToUserUIButtonHandler(RoutedEventHandler handler)
+        public void addSwitchToUserUIButtonHandler(RoutedEventHandler handler)
         {
             switchToUserUIButton.Click += handler;
         }
 
-        public void AddUserListSelectionChangedHandler(SelectionChangedEventHandler handler)
+        public void addUserListSelectionChangedHandler(SelectionChangedEventHandler handler)
         {
             UserList.SelectionChanged += handler;
         }
 
-        public void addTimeSlotHandler(RoutedEventHandler handler) 
+        public void addTimeSlotButtonHandler(RoutedEventHandler handler) 
         {
             nine.Click += handler;
             ninethirty.Click += handler;
@@ -52,7 +52,7 @@ namespace JLLSco.Views
             five.Click += handler;
         }
 
-        public void AddCreateUserButtonHandler(RoutedEventHandler handler)
+        public void addCreateUserButtonHandler(RoutedEventHandler handler)
         {
             createUserButton.Click += handler;
         }
@@ -64,7 +64,7 @@ namespace JLLSco.Views
             loginInformationWindow.ShowDialog();
         }
 
-        public void AddDeletedUserHandler(RoutedEventHandler handler)
+        public void addDeleteUserButtonHandler(RoutedEventHandler handler)
         {
             deleteUserBttn.Click += handler;
         }
@@ -74,7 +74,7 @@ namespace JLLSco.Views
             availableTab.MouseLeftButtonUp += handler;
         }
 
-        public void AddTabEditUserHandler(MouseButtonEventHandler handler)
+        public void addEditUserTabHandler(MouseButtonEventHandler handler)
         {
             editUsers.MouseLeftButtonUp += handler;
         }
@@ -92,7 +92,7 @@ namespace JLLSco.Views
             currentDay.Content = date.DayOfWeek.ToString();
         }
 
-        public void addApplyHandler(RoutedEventHandler handler) 
+        public void addApplyButtonHandler(RoutedEventHandler handler) 
         {
             applyAvailable.Click += handler;        
         }
@@ -118,8 +118,17 @@ namespace JLLSco.Views
             five1.Click += handler;        
         }
 
-        public void addFindAppointHandler(RoutedEventHandler handler) {
+        public void addFindAppointmentButtonHandler(RoutedEventHandler handler) {
             FindAvail.Click += handler;
+        }
+
+        public void clearForm()
+        {
+            viewUsers_FirstNameTextBox.Text = "";
+            viewUsers_LastNameTextBox.Text = "";
+            viewUsers_EmailTextBox.Text = "";
+            viewUsers_PhoneTextBox.Text = "";
+            viewUsers_TypeComboBox.Text = "";
         }
 
    
