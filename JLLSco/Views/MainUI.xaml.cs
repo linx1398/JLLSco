@@ -130,20 +130,5 @@ namespace JLLSco.Views
             viewUsers_PhoneTextBox.Text = "";
             viewUsers_TypeComboBox.Text = "";
         }
-
-   
-
-
-
-
-     
-
-
-
-
-
-
-
-
     }
 }
